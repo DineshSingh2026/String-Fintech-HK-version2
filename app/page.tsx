@@ -47,8 +47,7 @@ export default function HomePage() {
                 AI, Innovation &amp; Technology
               </span>
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-200 sm:text-xl">{hero.subheadline}</p>
-            <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-400 sm:text-base">{hero.body}</p>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">{hero.body}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/services" className="btn group bg-brand-600 text-white shadow-[0_10px_30px_-10px_rgba(244,78,4,0.8)] hover:bg-brand-700">
                 Explore Our Services

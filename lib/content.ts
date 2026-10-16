@@ -344,9 +344,7 @@ export const home = {
   hero: {
     eyebrow: "AI • Technology • Innovation",
     headline: "Transforming Business Through AI, Innovation & Technology",
-    subheadline:
-      "We help businesses thrive in the digital era through artificial intelligence, emerging technologies and strategic IT consulting.",
-    body: "By combining intelligent automation, technology-driven innovation and business-focused digital solutions, we help organizations optimize operations, strengthen decision-making, unlock new opportunities and accelerate digital transformation. Our approach bridges business strategy with technological excellence to deliver measurable impact, sustainable growth and a competitive edge in an AI-driven world.",
+    body: "We combine intelligent automation and strategic IT consulting to help organizations optimize operations, sharpen decision-making and accelerate digital transformation, delivering measurable impact and sustainable growth.",
   },
   overview: {
     eyebrow: "Executive Overview",
