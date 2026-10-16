@@ -1,0 +1,58 @@
+import {
+  BrainCircuit,
+  Building2,
+  ChartCandlestick,
+  ChartLine,
+  ClipboardList,
+  Cloud,
+  CloudCog,
+  Cpu,
+  Database,
+  DatabaseZap,
+  FileChartColumn,
+  Gamepad2,
+  HandCoins,
+  Landmark,
+  LayoutDashboard,
+  Megaphone,
+  Network,
+  Rocket,
+  Server,
+  TrendingUp,
+  UserCheck,
+  Users,
+  Workflow,
+  type LucideIcon,
+} from "lucide-react";
+import type { IconKey } from "@/lib/content";
+
+export const iconMap: Record<IconKey, LucideIcon> = {
+  corporate: Building2,
+  string: Network,
+  institution: Landmark,
+  users: Users,
+  decision: UserCheck,
+  requirements: ClipboardList,
+  execution: Rocket,
+  analytics: ChartLine,
+  settlement: HandCoins,
+  provider: Server,
+  intelligence: BrainCircuit,
+  reporting: FileChartColumn,
+  cloud: Cloud,
+  collect: DatabaseZap,
+  process: Cpu,
+  ai: BrainCircuit,
+  predict: TrendingUp,
+  dashboard: LayoutDashboard,
+  automate: Workflow,
+};
+
+/** One representative icon per service, keyed by slug. */
+export const serviceIcons: Record<string, LucideIcon> = {
+  "web3-gaming-blockchain": Gamepad2,
+  "ai-data-services-analytics": Database,
+  "digital-marketing-growth": Megaphone,
+  "financial-data-analytics": ChartCandlestick,
+  "cloud-infrastructure-ai": CloudCog,
+};

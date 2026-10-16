@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+/*
+ * String FinTech design tokens.
+ * #F44E04 is the brand accent for icons, lines, eyebrows on dark and focus states.
+ * Filled CTAs and small orange text on light backgrounds use the deeper
+ * brand-600 / brand-700 shades so white/orange text meets WCAG AA (4.5:1).
+ */
+@theme {
+  --color-brand: #f44e04;
+  --color-brand-600: #d04000;
+  --color-brand-700: #b23700;
+  --color-brand-ink: #c23c00;
+  --color-brand-50: #fff3ec;
+
+  --color-navy: #0b1220;
+  --color-navy-800: #111a2e;
+  --color-navy-700: #1a2540;
+  --color-ink: #0f172a;
+  --color-mist: #f6f7f9;
+  --color-on-dark: #e2e8f0;
+
+  --font-heading: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-card: 12px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading font-semibold tracking-tight text-balance;
+  }
+  ::selection {
+    background: #f44e04;
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid #f44e04;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding-inline: 1rem;
+  @variant sm {
+    padding-inline: 1.5rem;
+  }
+  @variant lg {
+    padding-inline: 2rem;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+@utility btn {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+/* Fine technical grid used on dark sections. */
+@utility grid-lines {
+  background-image:
+    linear-gradient(to right, rgb(226 232 240 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(226 232 240 / 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+@utility grid-lines-light {
+  background-image:
+    linear-gradient(to right, rgb(15 23 42 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(15 23 42 / 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Animated data-flow dashes for delivery diagrams. */
+@keyframes flow-x {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.flow-line {
+  stroke-dasharray: 4 8;
+  animation: flow-x 1.2s linear infinite;
+}
+@keyframes flow-dot-x {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes flow-dot-y {
+  from {
+    top: 0%;
+  }
+  to {
+    top: 100%;
+  }
+}
+.flow-dot-x {
+  animation: flow-dot-x 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+.flow-dot-y {
+  animation: flow-dot-y 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Ambient glow orbs that drift slowly behind dark sections. */
+@keyframes orb-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(12%, -10%, 0) scale(1.12);
+  }
+  66% {
+    transform: translate3d(-8%, 8%, 0) scale(0.94);
+  }
+}
+@keyframes orb-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-14%, -12%, 0) scale(1.18);
+  }
+}
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform;
+}
+.orb-a {
+  animation: orb-drift-a 22s ease-in-out infinite;
+}
+.orb-b {
+  animation: orb-drift-b 28s ease-in-out infinite;
+}
+
+/* Light beams travelling along the background grid lines. */
+@keyframes beam-x {
+  from {
+    transform: translateX(-30vw);
+  }
+  to {
+    transform: translateX(130vw);
+  }
+}
+@keyframes beam-y {
+  from {
+    transform: translateY(-40%);
+  }
+  to {
+    transform: translateY(140%);
+  }
+}
+.beam-x {
+  position: absolute;
+  left: 0;
+  height: 1px;
+  width: 22vw;
+  background: linear-gradient(90deg, transparent, rgb(244 78 4 / 0.9), transparent);
+  animation: beam-x 9s linear infinite;
+}
+.beam-y {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, rgb(244 78 4 / 0.8), transparent);
+  animation: beam-y 11s linear infinite;
+}
+
+/* Slow cinematic zoom for hero imagery. */
+@keyframes ken-burns {
+  from {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+  }
+}
+.ken-burns {
+  animation: ken-burns 30s ease-in-out infinite alternate;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.float-y {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+/* Rotating conic sheen used on highlighted frames. */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam-x,
+  .beam-y,
+  .pulse-ring {
+    display: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .flow-dot-x,
+  .flow-dot-y {
+    display: none;
+  }
+}
