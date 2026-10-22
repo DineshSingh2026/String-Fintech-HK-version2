@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { serviceIcons } from "@/components/icons";
-import { v2, v2Service } from "@/components/v2/links";
+import { v2 } from "@/components/v2/links";
 import { Block, BlockHeading, Kicker, ServiceList, V2Cta } from "@/components/v2/ui";
-import { about, home, services } from "@/lib/content";
+import { about, home, images } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: home.seoTitle,
@@ -16,9 +16,19 @@ export default function V2HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-white pb-20 pt-16 sm:pb-24 sm:pt-24 lg:pb-28">
-        <div className="container-site grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+      <section className="relative isolate overflow-hidden bg-white">
+        {/* The page's single image: traditional finance (columns) becoming a digital network,
+            echoing the "Connecting the Digital Economy with Trusted Financial Services" message.
+            It fades to transparent on the left so the copy sits on plain white. */}
+        <div
+          aria-hidden
+          className="absolute inset-y-0 right-0 -z-10 hidden w-1/2 [mask-image:linear-gradient(to_right,transparent,black_55%)] lg:block"
+        >
+          <Image src={images.overview} alt="" fill priority sizes="50vw" className="object-cover object-[30%_50%]" />
+        </div>
+
+        <div className="container-site flex min-h-[calc(100svh-100px)] flex-col justify-center pb-20 pt-16 sm:pb-24 sm:pt-24 lg:py-28">
+          <div className="max-w-[34rem]">
             <Kicker>{hero.eyebrow}</Kicker>
             <h1 className="mt-5 text-[40px] leading-[1.06] text-ink sm:text-6xl">
               {hero.headline.split("AI, Innovation & Technology")[0]}
@@ -36,24 +46,10 @@ export default function V2HomePage() {
             </div>
           </div>
 
-          {/* Quick index of services in place of hero imagery */}
-          <nav aria-label="Services at a glance" className="lg:col-span-5 lg:pt-3">
-            <p className="text-sm text-slate-500">What we do</p>
-            <ul className="mt-4 divide-y divide-slate-200 border-y border-slate-200">
-              {services.map((s) => {
-                const Icon = serviceIcons[s.slug];
-                return (
-                  <li key={s.slug}>
-                    <Link href={v2Service(s.slug)} className="group flex items-center gap-4 py-4">
-                      <Icon className="h-5 w-5 shrink-0 text-brand" strokeWidth={1.6} aria-hidden />
-                      <span className="flex-1 text-[15px] font-medium text-ink group-hover:text-brand-ink">{s.title}</span>
-                      <ArrowRight className="h-4 w-4 text-slate-300 transition-all group-hover:translate-x-0.5 group-hover:text-brand-ink" aria-hidden />
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+          {/* Below lg the image sits under the copy instead of behind it. */}
+          <div aria-hidden className="relative mt-14 aspect-[16/9] overflow-hidden rounded-2xl lg:hidden">
+            <Image src={images.overview} alt="" fill sizes="100vw" className="object-cover" />
+          </div>
         </div>
       </section>
 
