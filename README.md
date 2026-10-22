@@ -1,6 +1,6 @@
 # String FinTech HK Ltd. — Corporate Website
 
-Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · Framer Motion.
+Next.js 16 (App Router) · TypeScript · Tailwind CSS 4.
 
 ## Run
 
@@ -11,16 +11,20 @@ npm run build && npm start
 ```
 
 ## Structure
+
 | Path | Purpose |
 | --- | --- |
-| `lib/content.ts` | **All site copy**: services, delivery-model nodes, SEO titles/meta, contact details |
-| `app/(main)/` | Current design: Home, Services, About, Contact (own header/footer layout) |
-| `app/v2/` | "Simple" white design variant, same content, at `/v2` (noindex while under review) |
-| `app/(main)/services/[slug]/page.tsx` | Template for the 5 service pages (statically generated) |
+| `lib/content.ts` | **All site copy**: services, delivery-model steps, SEO titles/meta, contact details, nav links |
+| `app/page.tsx` | Home (the site's one image is the hero background) |
+| `app/services/page.tsx` | Services overview |
+| `app/services/[slug]/page.tsx` | Template for the 5 service pages (statically generated) |
+| `app/about`, `app/contact` | About Us, Contact Us |
 | `app/api/enquiry/route.ts` | Contact form endpoint |
-| `components/DeliveryDiagram.tsx` | Interactive Service Delivery Model diagram |
-| `components/NetworkCanvas.tsx` | Animated hero node network |
-| `app/globals.css` | Design tokens (colours, fonts, grid lines, flow animations) |
+| `components/ui.tsx` | Shared building blocks: page intro, sections, service list, CTA |
+| `components/Header.tsx`, `components/Footer.tsx` | Site header and footer |
+| `app/globals.css` | Design tokens (colours, fonts, buttons) |
+
+Old `/v2/...` preview links permanently redirect to the matching page (see `next.config.ts`).
 
 ## Contact form
 
@@ -30,7 +34,7 @@ pre-filled email to info@stringfintech.com, so no enquiry is silently lost.
 
 ## Brand colour and accessibility
 
-`#F44E04` is used for icons, lines, eyebrows on dark backgrounds and focus rings.
+`#F44E04` is used for icons, lines and focus rings.
 White text on `#F44E04` is only 3.5:1 contrast, so filled buttons use `#D04000`
 and small orange text on white uses `#C23C00`. Both meet WCAG AA (4.5:1).
 

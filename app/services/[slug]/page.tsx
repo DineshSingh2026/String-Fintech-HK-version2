@@ -3,9 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowDown, ArrowRight, Info } from "lucide-react";
 import { iconMap } from "@/components/icons";
-import { v2 } from "@/components/v2/links";
-import { Block, BlockHeading, Kicker, PageIntro, ServiceList, V2Cta } from "@/components/v2/ui";
-import { getService, services } from "@/lib/content";
+import { Block, BlockHeading, Kicker, PageIntro, ServiceList, CtaSection } from "@/components/ui";
+import { getService, serviceHref, services } from "@/lib/content";
 
 type Params = { slug: string };
 
@@ -19,10 +18,16 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const s = getService(slug);
   if (!s) return {};
-  return { title: s.seoTitle, description: s.metaDescription };
+  const url = serviceHref(s.slug);
+  return {
+    title: s.seoTitle,
+    description: s.metaDescription,
+    alternates: { canonical: url },
+    openGraph: { title: s.seoTitle, description: s.metaDescription, url },
+  };
 }
 
-export default async function V2ServicePage({ params }: { params: Promise<Params> }) {
+export default async function ServicePage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const s = getService(slug);
   if (!s) notFound();
@@ -36,7 +41,7 @@ export default async function V2ServicePage({ params }: { params: Promise<Params
         kicker={`Service ${s.number}`}
         title={s.title}
         intro={s.intro}
-        crumbs={[{ href: v2("/"), label: "Home" }, { href: v2("/services"), label: "Services" }, { label: s.title }]}
+        crumbs={[{ href: "/", label: "Home" }, { href: "/services", label: "Services" }, { label: s.title }]}
       >
         {s.markets && (
           <ul aria-label="Markets covered" className="mt-8 flex flex-wrap gap-2">
@@ -146,7 +151,7 @@ export default async function V2ServicePage({ params }: { params: Promise<Params
           <h2 id="more-heading" className="text-3xl text-ink">
             Other services
           </h2>
-          <Link href={v2("/services")} className="hidden items-center gap-2 text-[15px] font-medium text-brand-ink hover:underline sm:inline-flex">
+          <Link href={"/services"} className="hidden items-center gap-2 text-[15px] font-medium text-brand-ink hover:underline sm:inline-flex">
             All services <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
@@ -156,7 +161,7 @@ export default async function V2ServicePage({ params }: { params: Promise<Params
       </Block>
 
       <div className="pt-20 sm:pt-24" />
-      <V2Cta />
+      <CtaSection />
     </>
   );
 }

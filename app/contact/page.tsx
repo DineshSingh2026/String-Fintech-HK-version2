@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
-import { v2 } from "@/components/v2/links";
-import { PageIntro } from "@/components/v2/ui";
+import { PageIntro } from "@/components/ui";
 import { company, contact } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: contact.seoTitle,
   description: contact.metaDescription,
+  alternates: { canonical: "/contact" },
+  openGraph: { title: contact.seoTitle, description: contact.metaDescription, url: "/contact" },
 };
 
 const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(company.mapQuery)}&output=embed`;
 
-export default function V2ContactPage() {
+export default function ContactPage() {
   const details = [
     { icon: MapPin, label: "Address", content: company.addressLines.map((l) => <span key={l} className="block">{l}</span>) },
     { icon: Phone, label: "Phone", content: <a href={company.phoneHref} className="hover:text-brand-ink">{company.phoneDisplay}</a> },
@@ -21,7 +22,7 @@ export default function V2ContactPage() {
 
   return (
     <>
-      <PageIntro title={contact.headline} intro={contact.subheadline} crumbs={[{ href: v2("/"), label: "Home" }, { label: "Contact Us" }]} />
+      <PageIntro title={contact.headline} intro={contact.subheadline} crumbs={[{ href: "/", label: "Home" }, { label: "Contact Us" }]} />
 
       <section aria-label="Contact details and enquiry form" className="border-t border-slate-200 bg-white py-16 sm:py-20">
         <div className="container-site grid gap-14 lg:grid-cols-12 lg:gap-16">

@@ -51,8 +51,6 @@ export type DiagramNode = {
 
 export type Service = {
   slug: string;
-  image: string;
-  imageAlt: string;
   number: string;
   title: string;
   summary: string;
@@ -77,8 +75,6 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "web3-gaming-blockchain",
-    image: "/images/web3-gaming.png",
-    imageAlt: "Translucent game controller above a chain of glowing blockchain blocks",
     number: "01",
     title: "Web3 Gaming & Blockchain Solutions",
     summary:
@@ -131,8 +127,6 @@ export const services: Service[] = [
   },
   {
     slug: "ai-data-services-analytics",
-    image: "/images/ai-data.png",
-    imageAlt: "Data streams converging into a glowing neural network core inside a data centre",
     number: "02",
     title: "AI-Powered Data Services & Analytics",
     summary:
@@ -184,8 +178,6 @@ export const services: Service[] = [
   },
   {
     slug: "digital-marketing-growth",
-    image: "/images/digital-marketing.png",
-    imageAlt: "Holographic marketing analytics panels with a conversion funnel and growth charts",
     number: "03",
     title: "Digital Marketing & Growth Solutions",
     summary:
@@ -236,8 +228,6 @@ export const services: Service[] = [
   },
   {
     slug: "financial-data-analytics",
-    image: "/images/financial-analytics.png",
-    imageAlt: "Glass candlestick chart rising across a dark market-data environment",
     number: "04",
     title: "Financial Data Analytics & Intelligence",
     summary:
@@ -281,8 +271,6 @@ export const services: Service[] = [
   },
   {
     slug: "cloud-infrastructure-ai",
-    image: "/images/cloud-infrastructure.png",
-    imageAlt: "Glowing cloud above server racks connected by light beams to an AI processor",
     number: "05",
     title: "Cloud Infrastructure & AI Solutions",
     summary:
@@ -335,6 +323,12 @@ export const services: Service[] = [
 
 export const serviceHref = (slug: string) => `/services/${slug}`;
 
+export const navLinks = [
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 export const getService = (slug: string) => services.find((s) => s.slug === slug);
 
 export const home = {
@@ -376,24 +370,10 @@ export const home = {
 };
 
 export const images = {
-  hero: "/images/hero-network.png",
+  /** Home hero: traditional finance (columns) becoming a digital network. */
   overview: "/images/overview-bridge.png",
-  hongKong: "/images/hong-kong.png",
 };
 
-/** Keywords for the scrolling ticker, drawn from the service copy. */
-export const keywords = [
-  "Artificial Intelligence",
-  "Web3 Gaming",
-  "Blockchain Technology",
-  "Data Engineering",
-  "Predictive Insights",
-  "Performance Marketing",
-  "Financial Intelligence",
-  "Cloud-Native Architecture",
-  "API Connectivity",
-  "Digital Transformation",
-];
 
 export const ctaBand = {
   headline: "Ready to Accelerate Your Digital Transformation?",

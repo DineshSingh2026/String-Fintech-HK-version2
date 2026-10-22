@@ -1,44 +1,22 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { company, serviceHref, services } from "@/lib/content";
-
-const companyLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { company, navLinks, serviceHref, services } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-navy text-on-dark">
-      <div aria-hidden className="grid-lines pointer-events-none absolute inset-0 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
-      <div className="container-site relative pb-10 pt-16 lg:pt-20">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12">
+    <footer className="border-t border-slate-200 bg-white">
+      <div className="container-site py-14 lg:py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
           <div className="sm:col-span-2 lg:col-span-4">
-            <p className="font-heading text-xl font-semibold text-white">{company.name}</p>
-            <p className="mt-3 max-w-xs text-[15px] leading-relaxed text-slate-400">{company.tagline}</p>
-            <div aria-hidden className="mt-8 h-px w-16 bg-brand" />
+            <p className="font-heading text-lg font-semibold text-ink">{company.name}</p>
+            <p className="mt-2 max-w-xs text-[15px] leading-relaxed text-slate-500">{company.tagline}</p>
           </div>
 
-          <nav aria-label="Company" className="lg:col-span-2">
-            <h2 className="eyebrow text-slate-400">Company</h2>
-            <ul className="mt-5 space-y-3">
-              {companyLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="text-[15px] text-slate-300 transition-colors hover:text-white">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Services" className="lg:col-span-3">
-            <h2 className="eyebrow text-slate-400">Services</h2>
-            <ul className="mt-5 space-y-3">
+          <nav aria-label="Services" className="lg:col-span-4">
+            <h2 className="text-sm font-semibold text-ink">Services</h2>
+            <ul className="mt-4 space-y-2.5">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link href={serviceHref(s.slug)} className="text-[15px] text-slate-300 transition-colors hover:text-white">
+                  <Link href={serviceHref(s.slug)} className="text-[15px] text-slate-500 hover:text-ink">
                     {s.title}
                   </Link>
                 </li>
@@ -46,28 +24,36 @@ export function Footer() {
             </ul>
           </nav>
 
-          <div className="sm:col-span-2 lg:col-span-3">
-            <h2 className="eyebrow text-slate-400">Contact</h2>
-            <address className="mt-5 space-y-4 text-[15px] not-italic text-slate-300">
-              <p className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
-                <span>
-                  {company.addressLines.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </span>
+          <nav aria-label="Company" className="lg:col-span-1">
+            <h2 className="text-sm font-semibold text-ink">Company</h2>
+            <ul className="mt-4 space-y-2.5">
+              {[{ href: "/", label: "Home" }, ...navLinks.filter((l) => !l.href.endsWith("/services"))].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-[15px] text-slate-500 hover:text-ink">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="lg:col-span-3">
+            <h2 className="text-sm font-semibold text-ink">Contact</h2>
+            <address className="mt-4 space-y-2.5 text-[15px] not-italic text-slate-500">
+              <p>
+                {company.addressLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
               </p>
-              <p className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
-                <a href={company.phoneHref} className="hover:text-white">
+              <p>
+                <a href={company.phoneHref} className="hover:text-ink">
                   {company.phoneDisplay}
                 </a>
               </p>
-              <p className="flex gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
-                <a href={`mailto:${company.email}`} className="break-all hover:text-white">
+              <p>
+                <a href={`mailto:${company.email}`} className="break-all hover:text-ink">
                   {company.email}
                 </a>
               </p>
@@ -75,9 +61,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-white/10 pt-8">
-          <p className="max-w-4xl text-[13px] leading-relaxed text-slate-400">{company.disclaimer}</p>
-          <p className="mt-6 text-[13px] text-slate-400">{company.copyright}</p>
+        <div className="mt-12 border-t border-slate-200 pt-8">
+          <p className="max-w-4xl text-[13px] leading-relaxed text-slate-500">{company.disclaimer}</p>
+          <p className="mt-4 text-[13px] text-slate-500">{company.copyright}</p>
         </div>
       </div>
     </footer>

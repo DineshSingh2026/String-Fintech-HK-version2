@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { v2 } from "@/components/v2/links";
-import { Block, PageIntro, V2Cta } from "@/components/v2/ui";
+import { Block, PageIntro, CtaSection } from "@/components/ui";
 import { about } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: about.seoTitle,
   description: about.metaDescription,
+  alternates: { canonical: "/about" },
+  openGraph: { title: about.seoTitle, description: about.metaDescription, url: "/about" },
 };
 
-export default function V2AboutPage() {
+export default function AboutPage() {
   return (
     <>
-      <PageIntro kicker={about.eyebrow} title={about.headline} crumbs={[{ href: v2("/"), label: "Home" }, { label: "About Us" }]} />
+      <PageIntro kicker={about.eyebrow} title={about.headline} crumbs={[{ href: "/", label: "Home" }, { label: "About Us" }]} />
 
       <Block>
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">
@@ -36,7 +37,7 @@ export default function V2AboutPage() {
       </Block>
 
       <div className="border-t border-slate-200 pt-20 sm:pt-24" />
-      <V2Cta />
+      <CtaSection />
     </>
   );
 }

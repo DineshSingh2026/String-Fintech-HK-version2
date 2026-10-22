@@ -2,8 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { serviceIcons } from "@/components/icons";
-import { ctaBand, services, type Service } from "@/lib/content";
-import { v2, v2Service } from "./links";
+import { ctaBand, serviceHref, services, type Service } from "@/lib/content";
 
 export function Kicker({ children }: { children: ReactNode }) {
   return <p className="text-sm font-medium text-brand-ink">{children}</p>;
@@ -101,7 +100,7 @@ export function ServiceList({ items = services }: { items?: Service[] }) {
         const Icon = serviceIcons[s.slug];
         return (
           <li key={s.slug}>
-            <Link href={v2Service(s.slug)} className="group grid gap-4 py-8 sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:gap-8">
+            <Link href={serviceHref(s.slug)} className="group grid gap-4 py-8 sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:gap-8">
               <span className="grid h-12 w-12 place-items-center rounded-full border border-slate-200 text-brand transition-colors group-hover:border-brand group-hover:bg-brand-50">
                 <Icon className="h-5 w-5" strokeWidth={1.6} aria-hidden />
               </span>
@@ -123,7 +122,7 @@ export function ServiceList({ items = services }: { items?: Service[] }) {
   );
 }
 
-export function V2Cta() {
+export function CtaSection() {
   return (
     <section aria-labelledby="cta-heading" className="bg-white pb-20 sm:pb-24">
       <div className="container-site">
@@ -134,7 +133,7 @@ export function V2Cta() {
             </h2>
             <p className="mt-3 text-lg text-slate-600">{ctaBand.body}</p>
           </div>
-          <Link href={v2("/contact")} className="btn group shrink-0 bg-brand-600 text-white hover:bg-brand-700">
+          <Link href={"/contact"} className="btn group shrink-0 bg-brand-600 text-white hover:bg-brand-700">
             Contact Us
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
           </Link>

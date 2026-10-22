@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { v2 } from "@/components/v2/links";
-import { Block, BlockHeading, Kicker, ServiceList, V2Cta } from "@/components/v2/ui";
+import { Block, BlockHeading, Kicker, ServiceList, CtaSection } from "@/components/ui";
 import { about, home, images } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: home.seoTitle,
   description: home.metaDescription,
+  alternates: { canonical: "/" },
+  openGraph: { title: home.seoTitle, description: home.metaDescription, url: "/", images: [images.overview] },
 };
 
-export default function V2HomePage() {
+export default function HomePage() {
   const { hero, overview } = home;
   return (
     <>
@@ -36,11 +37,11 @@ export default function V2HomePage() {
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed">{hero.body}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link href={v2("/services")} className="btn group bg-brand-600 text-white hover:bg-brand-700">
+              <Link href={"/services"} className="btn group bg-brand-600 text-white hover:bg-brand-700">
                 Explore Our Services
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
               </Link>
-              <Link href={v2("/contact")} className="btn border border-slate-300 text-ink hover:border-ink">
+              <Link href={"/contact"} className="btn border border-slate-300 text-ink hover:border-ink">
                 Contact Us
               </Link>
             </div>
@@ -76,7 +77,7 @@ export default function V2HomePage() {
               {home.services.headline}
             </h2>
           </div>
-          <Link href={v2("/services")} className="inline-flex items-center gap-2 text-[15px] font-medium text-brand-ink hover:underline">
+          <Link href={"/services"} className="inline-flex items-center gap-2 text-[15px] font-medium text-brand-ink hover:underline">
             All services <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
@@ -89,7 +90,7 @@ export default function V2HomePage() {
       <Block tone="mist" labelledBy="about-heading">
         <BlockHeading id="about-heading" kicker={home.about.eyebrow} title={home.about.headline}>
           <p>{home.about.body}</p>
-          <Link href={v2("/about")} className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-brand-ink hover:underline">
+          <Link href={"/about"} className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-brand-ink hover:underline">
             Learn more about us <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </BlockHeading>
@@ -104,7 +105,7 @@ export default function V2HomePage() {
       </Block>
 
       <div className="border-t border-slate-200 pt-20 sm:pt-24" />
-      <V2Cta />
+      <CtaSection />
     </>
   );
 }
