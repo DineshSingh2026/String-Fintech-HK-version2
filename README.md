@@ -11,14 +11,12 @@ npm run build && npm start
 ```
 
 ## Structure
-
 | Path | Purpose |
 | --- | --- |
 | `lib/content.ts` | **All site copy**: services, delivery-model nodes, SEO titles/meta, contact details |
-| `app/page.tsx` | Home |
-| `app/services/page.tsx` | Services overview |
-| `app/services/[slug]/page.tsx` | Template for the 5 service pages (statically generated) |
-| `app/about`, `app/contact` | About Us, Contact Us |
+| `app/(main)/` | Current design: Home, Services, About, Contact (own header/footer layout) |
+| `app/v2/` | "Simple" white design variant, same content, at `/v2` (noindex while under review) |
+| `app/(main)/services/[slug]/page.tsx` | Template for the 5 service pages (statically generated) |
 | `app/api/enquiry/route.ts` | Contact form endpoint |
 | `components/DeliveryDiagram.tsx` | Interactive Service Delivery Model diagram |
 | `components/NetworkCanvas.tsx` | Animated hero node network |

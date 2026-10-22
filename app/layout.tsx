@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter, Inter_Tight } from "next/font/google";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { MotionProvider } from "@/components/MotionProvider";
 import { company, home } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
@@ -53,13 +51,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${interTight.variable} ${inter.variable} ${plexMono.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
-        <MotionProvider>
-          <Header />
-          <main id="main" tabIndex={-1} className="outline-none">
-            {children}
-          </main>
-          <Footer />
-        </MotionProvider>
+        {/* Header/Footer live in each route group's layout so site variants can differ. */}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
