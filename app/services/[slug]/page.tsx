@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowDown, ArrowRight, Info } from "lucide-react";
+import { CloudCapabilities, CloudCommercials } from "@/components/CloudSections";
 import { iconMap } from "@/components/icons";
 import { Block, BlockHeading, Kicker, PageIntro, ServiceList, CtaSection } from "@/components/ui";
 import { getService, serviceHref, services } from "@/lib/content";
@@ -61,6 +62,8 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </p>
         </Block>
       )}
+
+      {s.cloud && <CloudCapabilities cloud={s.cloud} />}
 
       {/* DELIVERY MODEL: plain numbered steps */}
       <Block tone="mist" labelledBy="delivery-heading">
@@ -122,7 +125,9 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         </Block>
       )}
 
-      {s.billing && (
+      {s.cloud && <CloudCommercials cloud={s.cloud} billingBody={s.billing?.body} />}
+
+      {s.billing && !s.cloud && (
         <Block labelledBy="billing-heading">
           <BlockHeading id="billing-heading" kicker="Commercials" title={s.billing.heading}>
             <p>{s.billing.body}</p>

@@ -49,9 +49,25 @@ export type DiagramNode = {
   core?: boolean;
 };
 
+export type CloudCapabilityIcon = "migrate" | "modernize" | "managed" | "ai" | "cost" | "consult";
+
+export type CloudDetail = {
+  approach: { heading: string; body: string; points: { title: string; body: string }[] };
+  capabilities: {
+    heading: string;
+    body: string;
+    items: { title: string; icon: CloudCapabilityIcon; body: string; points: string[] }[];
+  };
+  engagement: { heading: string; body: string[]; steps: { title: string; body: string }[] };
+  platforms: { heading: string; body: string; items: { name: string; short: string; body: string }[]; note: string };
+  commercials: { heading: string; body: string; items: { title: string; body: string }[]; note: string };
+};
+
 export type Service = {
   slug: string;
   number: string;
+  /** Compact label for tight spaces such as the home hero graphic. */
+  shortTitle: string;
   title: string;
   summary: string;
   seoTitle: string;
@@ -68,6 +84,8 @@ export type Service = {
   capabilities?: { label: string; icon: IconKey }[];
   strategy?: { heading: string; body: string };
   billing?: { heading: string; body: string };
+  /** Extended end-to-end detail, currently used by the Cloud service page. */
+  cloud?: CloudDetail;
   objective: string;
   note?: string;
 };
@@ -76,6 +94,7 @@ export const services: Service[] = [
   {
     slug: "web3-gaming-blockchain",
     number: "01",
+    shortTitle: "Web3 & Blockchain",
     title: "Web3 Gaming & Blockchain Solutions",
     summary:
       "We build next-generation gaming experiences powered by blockchain technology, decentralized platforms and NFTs, enabling secure digital asset ownership, transparent in-game economies and seamless interoperability.",
@@ -128,6 +147,7 @@ export const services: Service[] = [
   {
     slug: "ai-data-services-analytics",
     number: "02",
+    shortTitle: "AI & Data Analytics",
     title: "AI-Powered Data Services & Analytics",
     summary:
       "We transform complex data into actionable intelligence through advanced data engineering, AI-driven analytics and scalable data management solutions.",
@@ -179,6 +199,7 @@ export const services: Service[] = [
   {
     slug: "digital-marketing-growth",
     number: "03",
+    shortTitle: "Digital Marketing",
     title: "Digital Marketing & Growth Solutions",
     summary:
       "We deliver data-driven digital marketing strategies that strengthen brand visibility, engage target audiences and maximize conversions.",
@@ -229,6 +250,7 @@ export const services: Service[] = [
   {
     slug: "financial-data-analytics",
     number: "04",
+    shortTitle: "Financial Intelligence",
     title: "Financial Data Analytics & Intelligence",
     summary:
       "We provide advanced financial data analytics across equities, options, commodities, currencies and cryptocurrency markets.",
@@ -272,6 +294,7 @@ export const services: Service[] = [
   {
     slug: "cloud-infrastructure-ai",
     number: "05",
+    shortTitle: "Cloud & AI",
     title: "Cloud Infrastructure & AI Solutions",
     summary:
       "We design and implement secure, scalable, cloud-native architectures built for modern business demands.",
@@ -315,6 +338,123 @@ export const services: Service[] = [
     billing: {
       heading: "Billing & Settlement",
       body: "String FinTech HK Ltd. manages cloud resources and invoices the client for cloud consumption plus agreed service fees. The company settles the underlying provider charges directly.",
+    },
+    cloud: {
+      approach: {
+        heading: "Cloud services aligned with your business goals",
+        body: "From initial assessment to ongoing operations, we help clients make informed cloud decisions and build technology foundations that can grow with their business.",
+        points: [
+          { title: "Plan with clarity", body: "Understand your existing IT environment, requirements, risks, and cloud options." },
+          { title: "Deploy with confidence", body: "Move workloads through a structured implementation and migration process." },
+          { title: "Optimize continuously", body: "Improve resource usage, operational visibility, security, and cost management." },
+        ],
+      },
+      capabilities: {
+        heading: "End-to-end cloud and AI capabilities",
+        body: "Flexible services designed around your technology environment, delivery priorities, and operating model.",
+        items: [
+          {
+            title: "Cloud Migration",
+            icon: "migrate",
+            body: "Navigate your cloud journey with expert planning and structured execution.",
+            points: [
+              "IT landscape and workload assessment",
+              "Migration planning and implementation",
+              "Application and database transition",
+              "Security and post-migration validation",
+            ],
+          },
+          {
+            title: "Cloud Modernization",
+            icon: "modernize",
+            body: "Update legacy systems and create a flexible foundation for digital growth.",
+            points: [
+              "Cloud-native architecture guidance",
+              "Application modernization",
+              "Containerization and deployment support",
+              "Automation and integration",
+            ],
+          },
+          {
+            title: "Managed Cloud Services",
+            icon: "managed",
+            body: "Keep cloud environments visible, supported, and aligned with operational needs.",
+            points: [
+              "Monitoring and incident support",
+              "Backup and recovery planning",
+              "Security updates and configuration reviews",
+              "Performance and availability management",
+            ],
+          },
+          {
+            title: "AI & Cloud Solutions",
+            icon: "ai",
+            body: "Support practical AI adoption using scalable cloud resources and integrations.",
+            points: [
+              "AI application and model deployment",
+              "API integration and workflow automation",
+              "GPU and compute workload planning",
+              "Cloud-native solution development",
+            ],
+          },
+          {
+            title: "Cost Optimization",
+            icon: "cost",
+            body: "Make cloud expenditure more transparent and align resource use with demand.",
+            points: [
+              "Usage and spend reviews",
+              "Resource sizing recommendations",
+              "Capacity and storage optimization",
+              "Ongoing FinOps support",
+            ],
+          },
+          {
+            title: "Cloud Consulting",
+            icon: "consult",
+            body: "Connect technology decisions to your business requirements and roadmap.",
+            points: [
+              "Cloud strategy and architecture",
+              "Technology and vendor evaluation",
+              "Implementation roadmaps",
+              "Technical documentation and guidance",
+            ],
+          },
+        ],
+      },
+      engagement: {
+        heading: "A practical partner for your cloud journey",
+        body: [
+          "String FinTech HK Ltd. can combine consulting, implementation, cloud provisioning, and ongoing management into a service model tailored to each client.",
+          "Clients receive clearly scoped services, transparent billing arrangements, and support that can continue beyond initial deployment.",
+        ],
+        steps: [
+          { title: "Assess and plan", body: "Review workloads, business objectives, security requirements, and expected cloud costs." },
+          { title: "Design and deploy", body: "Develop the solution architecture and provision or migrate approved workloads." },
+          { title: "Manage and optimize", body: "Monitor performance, maintain agreed controls, and identify efficiency improvements." },
+          { title: "Support and scale", body: "Provide ongoing assistance and help adapt infrastructure as business needs evolve." },
+        ],
+      },
+      platforms: {
+        heading: "Solutions across leading cloud platforms",
+        body: "We help clients plan and operate cloud workloads in suitable environments, subject to project needs and the applicable provider arrangements.",
+        items: [
+          { name: "Amazon Web Services", short: "AWS", body: "Compute, storage, networking, databases, security, and scalable application infrastructure." },
+          { name: "Google Cloud", short: "GC", body: "Cloud infrastructure, data services, application platforms, and AI-related workloads." },
+        ],
+        note: "AWS and Google Cloud are trademarks of their respective owners. Mention of these platforms does not imply a formal partnership or endorsement unless separately confirmed.",
+      },
+      commercials: {
+        heading: "A clear approach to contracts and billing",
+        body: "Each engagement should define what the client pays for, how usage is measured, and how services are delivered and settled.",
+        items: [
+          { title: "Assessment & migration", body: "One-time project fees based on agreed scope, complexity, and delivery milestones." },
+          { title: "Cloud consumption", body: "Provider usage charges billed directly by the provider or through an authorized billing arrangement, as agreed in the contract." },
+          { title: "Managed services", body: "Monthly or annual fees for defined monitoring, maintenance, support, and operational services." },
+          { title: "AI & development", body: "Project fees, recurring support, or usage-based pricing where appropriate and contractually defined." },
+          { title: "Reconciliation & settlement", body: "Clear invoicing and reconciliation of provider charges, service fees, credits, taxes, and payments." },
+        ],
+        note: "Cloud-provider resale, partner discounts, commissions, and consolidated billing are subject to the relevant provider program requirements and signed agreements. Service scope, service levels, taxes, and payment terms should be documented in each client contract.",
+      },
     },
     objective:
       "String FinTech HK Ltd. bridges corporate customers and leading cloud platforms through integrated cloud infrastructure and AI solutions. Through AWS and Google Cloud environments, we help businesses modernize applications, deploy AI workloads, optimize infrastructure costs and maintain scalable digital operations, supported by transparent contractual billing and settlement processes.",

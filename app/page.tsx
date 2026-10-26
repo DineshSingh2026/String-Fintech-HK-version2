@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { HeroOrbit, orbitDots } from "@/components/HeroOrbit";
 import { Block, BlockHeading, Kicker, ServiceList, CtaSection } from "@/components/ui";
-import { about, home, images } from "@/lib/content";
+import { about, home, images, services } from "@/lib/content";
+
+const heroFacts = [
+  { label: "Services", value: `${services.length} integrated` },
+  { label: "Cloud", value: "AWS & Google" },
+  { label: "Based in", value: "Hong Kong" },
+];
 
 export const metadata: Metadata = {
   title: home.seoTitle,
@@ -18,38 +24,70 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-white">
-        {/* The page's single image: traditional finance (columns) becoming a digital network,
-            echoing the "Connecting the Digital Economy with Trusted Financial Services" message.
-            It fades to transparent on the left so the copy sits on plain white. */}
-        <div
-          aria-hidden
-          className="absolute inset-y-0 right-0 -z-10 hidden w-1/2 [mask-image:linear-gradient(to_right,transparent,black_55%)] lg:block"
-        >
-          <Image src={images.overview} alt="" fill priority sizes="50vw" className="object-cover object-[30%_50%]" />
+        {/* Cloud hub with every service in orbit, drawn straight onto the white page beside the copy. */}
+        <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+          <div
+            aria-hidden
+            className="absolute inset-0 [background-size:22px_22px] [mask-image:radial-gradient(circle_at_center,black_20%,transparent_62%)]"
+            style={{ backgroundImage: orbitDots }}
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-[82%] max-w-[620px]">
+              <HeroOrbit />
+            </div>
+          </div>
         </div>
 
-        <div className="container-site flex min-h-[calc(100svh-100px)] flex-col justify-center pb-20 pt-16 sm:pb-24 sm:pt-24 lg:py-28">
-          <div className="max-w-[34rem]">
-            <Kicker>{hero.eyebrow}</Kicker>
-            <h1 className="mt-5 text-[40px] leading-[1.06] text-ink sm:text-6xl">
+        <div className="container-site flex flex-col justify-center pb-20 pt-14 sm:pb-24 sm:pt-20 lg:min-h-[calc(100svh-64px)] lg:py-24">
+          <div className="max-w-[34rem] lg:max-w-[calc(50%-3rem)] xl:max-w-[34rem]">
+            <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm font-medium text-slate-700 shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
+              </span>
+              {hero.eyebrow}
+            </p>
+            <h1 className="mt-6 text-[40px] leading-[1.04] tracking-[-0.025em] text-ink sm:text-6xl">
               {hero.headline.split("AI, Innovation & Technology")[0]}
-              <span className="text-brand-600">AI, Innovation &amp; Technology</span>
+              <span className="bg-gradient-to-r from-brand-700 via-brand-600 to-[#ff7a2e] bg-clip-text text-transparent">
+                AI, Innovation &amp; Technology
+              </span>
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed">{hero.body}</p>
+            <p className="mt-7 text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed">{hero.body}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link href={"/services"} className="btn group bg-brand-600 text-white hover:bg-brand-700">
+              <Link
+                href="/services"
+                className="btn group bg-brand-600 text-white shadow-[0_10px_30px_-10px_rgba(208,64,0,0.7)] hover:bg-brand-700"
+              >
                 Explore Our Services
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
               </Link>
-              <Link href={"/contact"} className="btn border border-slate-300 text-ink hover:border-ink">
+              <Link href="/contact" className="btn border border-slate-300 bg-white text-ink hover:border-ink">
                 Contact Us
               </Link>
             </div>
+
+            {/* Quick facts drawn from the site's own content */}
+            <dl className="mt-12 grid max-w-md grid-cols-3 divide-x divide-slate-200 border-t border-slate-200 pt-6">
+              {heroFacts.map((f) => (
+                <div key={f.label} className="px-4 first:pl-0">
+                  <dt className="text-xs text-slate-500">{f.label}</dt>
+                  <dd className="mt-1 font-heading text-[15px] font-semibold text-ink">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          {/* Below lg the image sits under the copy instead of behind it. */}
-          <div aria-hidden className="relative mt-14 aspect-[16/9] overflow-hidden rounded-2xl lg:hidden">
-            <Image src={images.overview} alt="" fill sizes="100vw" className="object-cover" />
+          {/* Below lg the graphic sits under the copy instead of behind it. */}
+          <div className="relative mt-14 px-2 py-6 sm:px-10 lg:hidden">
+            <div
+              aria-hidden
+              className="absolute inset-0 [background-size:20px_20px] [mask-image:radial-gradient(circle_at_center,black_20%,transparent_65%)]"
+              style={{ backgroundImage: orbitDots }}
+            />
+            <div className="relative mx-auto max-w-md">
+              <HeroOrbit compact />
+            </div>
           </div>
         </div>
       </section>
