@@ -32,13 +32,14 @@ export default function HomePage() {
             style={{ backgroundImage: orbitDots }}
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[82%] max-w-[620px]">
+            {/* Never taller than the window, so the whole hero fits on first view. */}
+            <div style={{ width: "min(82%, 620px, calc(100svh - 150px))" }}>
               <HeroOrbit />
             </div>
           </div>
         </div>
 
-        <div className="container-site flex flex-col justify-center pb-20 pt-14 sm:pb-24 sm:pt-20 lg:min-h-[calc(100svh-64px)] lg:py-24">
+        <div className="container-site flex flex-col justify-center pb-20 pt-14 sm:pb-24 sm:pt-20 lg:min-h-[min(calc(100svh-64px),780px)] lg:py-8">
           <div className="max-w-[34rem] lg:max-w-[calc(50%-3rem)] xl:max-w-[34rem]">
             <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm font-medium text-slate-700 shadow-sm">
               <span className="relative flex h-2 w-2">
@@ -47,14 +48,14 @@ export default function HomePage() {
               </span>
               {hero.eyebrow}
             </p>
-            <h1 className="mt-6 text-[40px] leading-[1.04] tracking-[-0.025em] text-ink sm:text-6xl">
+            <h1 className="mt-6 text-[40px] leading-[1.04] tracking-[-0.025em] text-ink sm:text-6xl lg:mt-5 lg:text-[clamp(2.5rem,7.2svh,3.75rem)]">
               {hero.headline.split("AI, Innovation & Technology")[0]}
               <span className="bg-gradient-to-r from-brand-700 via-brand-600 to-[#ff7a2e] bg-clip-text text-transparent">
                 AI, Innovation &amp; Technology
               </span>
             </h1>
-            <p className="mt-7 text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed">{hero.body}</p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <p className="mt-7 text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed lg:mt-[clamp(1rem,2.6svh,1.75rem)] lg:text-[clamp(1rem,2.3svh,1.25rem)]">{hero.body}</p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row lg:mt-[clamp(1.5rem,4svh,2.5rem)]">
               <Link
                 href="/services"
                 className="btn group bg-brand-600 text-white shadow-[0_10px_30px_-10px_rgba(208,64,0,0.7)] hover:bg-brand-700"
@@ -68,7 +69,7 @@ export default function HomePage() {
             </div>
 
             {/* Quick facts drawn from the site's own content */}
-            <dl className="mt-12 grid max-w-md grid-cols-3 divide-x divide-slate-200 border-t border-slate-200 pt-6">
+            <dl className="mt-12 grid max-w-md lg:mt-[clamp(1.5rem,4.5svh,3rem)] lg:pt-5 grid-cols-3 divide-x divide-slate-200 border-t border-slate-200 pt-6">
               {heroFacts.map((f) => (
                 <div key={f.label} className="px-4 first:pl-0">
                   <dt className="text-xs text-slate-500">{f.label}</dt>
