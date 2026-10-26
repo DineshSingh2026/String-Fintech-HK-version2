@@ -359,7 +359,7 @@ export const services: Service[] = [
     shortTitle: "Digital Marketing",
     title: "Digital Marketing & Growth Solutions",
     summary:
-      "SEO, PPC, social media and performance marketing powered by AI analytics, helping businesses reach the right audiences, generate qualified leads and improve conversions.",
+      "SEO, AEO, social media, PPC and influencer marketing powered by AI analytics and agentic media services, helping businesses grow visibility, leads and conversions.",
     seoTitle: "Digital Marketing & Growth Solutions | String FinTech HK Ltd.",
     metaDescription:
       "AI-powered SEO, performance marketing, audience targeting and campaign analytics delivering measurable growth for corporate clients.",

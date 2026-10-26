@@ -7,12 +7,12 @@ import {
   Gamepad2,
   Globe,
   Link2,
-  MousePointerClick,
   Search,
   Server,
   ShieldCheck,
-  Share2,
+  Sparkles,
   TrendingUp,
+  Users,
   BrainCircuit,
   type LucideIcon,
 } from "lucide-react";
@@ -255,13 +255,15 @@ function AiDataScene({ id }: { id: string }) {
   );
 }
 
-/* ---------- Digital Marketing: browser with funnel + growth ---------- */
+/* ---------- Digital Marketing: search + AI answer, social post, agentic AI, growth ---------- */
 function MarketingScene({ id }: { id: string }) {
-  const pts = "214,196 236,186 258,190 280,168 302,160 326,132 340,118";
+  const pts = "232,272 254,266 276,268 298,254 320,250 342,236 358,228";
+  const sparkle = (cx: number, cy: number, r: number) =>
+    `M${cx},${cy - r} Q${cx + r * 0.18},${cy - r * 0.18} ${cx + r},${cy} Q${cx + r * 0.18},${cy + r * 0.18} ${cx},${cy + r} Q${cx - r * 0.18},${cy + r * 0.18} ${cx - r},${cy} Q${cx - r * 0.18},${cy - r * 0.18} ${cx},${cy - r} Z`;
   return (
     <svg viewBox="0 0 400 300" className="h-full w-full">
       <Defs id={id}>
-        <linearGradient id={`${id}-f`} x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={`${id}-ai`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#fb7185" />
           <stop offset="100%" stopColor="#f97316" />
         </linearGradient>
@@ -269,45 +271,75 @@ function MarketingScene({ id }: { id: string }) {
           <stop offset="0%" stopColor="#fb7185" stopOpacity="0.25" />
           <stop offset="100%" stopColor="#fb7185" stopOpacity="0" />
         </linearGradient>
+        <linearGradient id={`${id}-av`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#c4b5fd" />
+          <stop offset="100%" stopColor="#818cf8" />
+        </linearGradient>
+        <linearGradient id={`${id}-post`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#fda4af" />
+          <stop offset="100%" stopColor="#fdba74" />
+        </linearGradient>
       </Defs>
 
-      <Card id={id} x={36} y={40} w={316} h={216} />
-      <line x1={36} x2={352} y1={72} y2={72} stroke={SLATE.soft} />
-      {["#fb7185", "#fbbf24", "#34d399"].map((c, i) => (
-        <circle key={c} cx={56 + i * 12} cy={56} r={4} fill={c} />
-      ))}
-      <rect x={106} y={49} width={176} height={14} rx={7} fill={SLATE.faint} stroke={SLATE.soft} />
-
-      {/* Funnel */}
-      <polygon points="74,92 186,92 170,124 90,124" fill={`url(#${id}-f)`} opacity={0.95} />
-      <polygon points="94,130 166,130 154,160 106,160" fill={`url(#${id}-f)`} opacity={0.75} />
-      <polygon points="110,166 150,166 143,194 117,194" fill={`url(#${id}-f)`} opacity={0.55} />
-      <rect x={124} y={198} width={12} height={20} rx={4} fill="#f97316" />
-      <circle cx={130} cy={232} r={6} fill="#f97316" opacity={0.25} />
-      <circle cx={130} cy={232} r={3} fill="#f97316" />
-
-      {/* Growth chart */}
-      {[110, 150, 190].map((y) => (
-        <line key={y} x1={206} x2={340} y1={y} y2={y} stroke={SLATE.soft} />
-      ))}
-      <polygon points={`214,206 ${pts} 340,206`} fill={`url(#${id}-area)`} />
-      <polyline points={pts} fill="none" stroke="#fb7185" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-      {pts.split(" ").map((p) => {
-        const [x, y] = p.split(",").map(Number);
-        return <circle key={p} cx={x} cy={y} r={3} fill="#fff" stroke="#fb7185" strokeWidth={1.8} />;
-      })}
-      {[0, 1, 2].map((i) => (
-        <rect key={i} x={214 + i * 44} y={220} width={36} height={18} rx={6} fill={SLATE.faint} stroke={SLATE.soft} />
+      {/* Search results with an AI answer (SEO & AEO) */}
+      <Card id={id} x={30} y={40} w={206} h={164} />
+      <rect x={44} y={54} width={178} height={22} rx={11} fill={SLATE.faint} stroke={SLATE.line} />
+      <circle cx={57} cy={64} r={4.5} fill="none" stroke="#fb7185" strokeWidth={1.8} />
+      <line x1={60.5} y1={67.5} x2={64} y2={71} stroke="#fb7185" strokeWidth={1.8} strokeLinecap="round" />
+      <rect x={72} y={62} width={70} height={4} rx={2} fill={SLATE.line} />
+      <rect x={44} y={84} width={178} height={50} rx={10} fill="#fff1f2" stroke="#fecdd3" />
+      <path d={sparkle(57, 97, 6)} fill={`url(#${id}-ai)`} />
+      <rect x={68} y={94} width={54} height={5} rx={2.5} fill={SLATE.ink} opacity={0.8} />
+      <rect x={54} y={110} width={156} height={4} rx={2} fill="#fecdd3" />
+      <rect x={54} y={119} width={118} height={4} rx={2} fill="#fecdd3" />
+      {[0, 1].map((i) => (
+        <g key={i}>
+          <rect x={44} y={146 + i * 26} width={24} height={18} rx={6} fill={i === 0 ? `url(#${id}-ai)` : SLATE.soft} />
+          <text x={56} y={158 + i * 26} fontSize={9} fontWeight={700} textAnchor="middle" fill={i === 0 ? "#fff" : SLATE.muted}>
+            #{i + 1}
+          </text>
+          <rect x={76} y={149 + i * 26} width={104 - i * 20} height={5} rx={2.5} fill={SLATE.ink} opacity={i === 0 ? 0.8 : 0.45} />
+          <rect x={76} y={158 + i * 26} width={70} height={4} rx={2} fill={SLATE.line} />
+        </g>
       ))}
 
-      {/* Target badge */}
-      <g filter={`url(#${id}-sh)`}>
-        <circle cx={350} cy={56} r={30} fill="#fff" stroke={SLATE.line} />
+      {/* Social / influencer post */}
+      <Card id={id} x={250} y={56} w={124} h={148} />
+      <circle cx={268} cy={74} r={9} fill={`url(#${id}-av)`} />
+      <rect x={282} y={68} width={48} height={5} rx={2.5} fill={SLATE.ink} opacity={0.8} />
+      <circle cx={337} cy={70.5} r={3.5} fill="#38bdf8" />
+      <rect x={282} y={77} width={32} height={4} rx={2} fill={SLATE.line} />
+      <rect x={260} y={90} width={104} height={66} rx={9} fill={`url(#${id}-post)`} />
+      <circle cx={344} cy={106} r={7} fill="#fff" opacity={0.75} />
+      <polygon points="260,156 288,124 306,142 318,132 364,156" fill="#fff" opacity={0.4} />
+      <path d="M268,170 c-3,-3.5 -8,-1 -6,3 l6,6 l6,-6 c2,-4 -3,-6.5 -6,-3 z" fill="#f43f5e" />
+      <rect x={280} y={170} width={22} height={5} rx={2.5} fill={SLATE.line} />
+      <circle cx={318} cy={172.5} r={5} fill="none" stroke={SLATE.muted} strokeWidth={1.5} />
+      <rect x={328} y={170} width={16} height={5} rx={2.5} fill={SLATE.line} />
+      <rect x={260} y={186} width={84} height={4} rx={2} fill={SLATE.soft} />
+
+      {/* Agentic AI → performance */}
+      <path d="M98,249 L218,249" fill="none" stroke="#fb7185" strokeOpacity={0.5} strokeWidth={1.6} strokeDasharray="4 5" />
+      <path d="M312,204 L312,216" fill="none" stroke="#fb7185" strokeOpacity={0.5} strokeWidth={1.6} strokeDasharray="4 5" />
+      <g className="orbit-motion">
+        <circle r={3} fill="#f43f5e">
+          <animateMotion dur="2.4s" repeatCount="indefinite" path="M98,249 L218,249" />
+        </circle>
       </g>
-      <circle cx={350} cy={56} r={20} fill="none" stroke="#fecdd3" strokeWidth={5} />
-      <circle cx={350} cy={56} r={11} fill="none" stroke="#fb7185" strokeWidth={5} />
-      <circle cx={350} cy={56} r={3.5} fill="#f43f5e" />
-      <path d="M374,32 L352,54 M374,32 l-8,1 M374,32 l-1,8" stroke={SLATE.ink} strokeWidth={2.2} strokeLinecap="round" fill="none" />
+      <g filter={`url(#${id}-sh)`}>
+        <rect x={40} y={220} width={58} height={58} rx={18} fill={`url(#${id}-ai)`} />
+      </g>
+      <rect x={46} y={224} width={46} height={20} rx={10} fill="#fff" opacity={0.22} />
+      <path d={sparkle(69, 249, 13)} fill="#fff" />
+      <path d={sparkle(85, 233, 5)} fill="#fff" opacity={0.85} />
+
+      <Card id={id} x={218} y={216} w={156} h={72} r={14} />
+      <rect x={230} y={226} width={44} height={5} rx={2.5} fill={SLATE.ink} opacity={0.8} />
+      <rect x={334} y={224} width={28} height={12} rx={6} fill="#ecfdf5" />
+      <path d="M343,233 l4,-5 l4,5" fill="none" stroke="#10b981" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" />
+      <polygon points={`232,280 ${pts} 358,280`} fill={`url(#${id}-area)`} />
+      <polyline points={pts} fill="none" stroke="#fb7185" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={358} cy={228} r={3.5} fill="#fff" stroke="#f43f5e" strokeWidth={2} />
     </svg>
   );
 }
@@ -409,9 +441,9 @@ const scenes: Record<string, { Scene: (p: { id: string }) => ReactNode; tags: Ta
   "digital-marketing-growth": {
     Scene: MarketingScene,
     tags: [
-      { icon: Search, label: "SEO", className: "left-[3%] top-[44%]" },
-      { icon: MousePointerClick, label: "PPC Advertising", className: "left-[8%] top-[84%]" },
-      { icon: Share2, label: "Social Media", className: "right-[4%] top-[84%]" },
+      { icon: Search, label: "SEO & AEO", className: "left-[4%] top-[2%]" },
+      { icon: Users, label: "Social & Influencer", className: "right-[3%] top-[4%]" },
+      { icon: Sparkles, label: "Agentic Media", className: "left-[26%] top-[70%]" },
     ],
   },
   "web3-gaming-blockchain": {
