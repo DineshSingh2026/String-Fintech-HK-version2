@@ -9,13 +9,13 @@ import { serviceIcons } from "./icons";
 import { services } from "@/lib/content";
 
 /*
- * Cinematic 18s company intro: the String FinTech brand, then the cloud, then each
+ * Cinematic 21s company intro: the String FinTech brand, then the cloud, then each
  * service as a full-frame slide, then a closing shot. Driven entirely by a time value
  * `t` so it can be rendered frame-by-frame into public/video/string-intro*.mp4
  * (see scripts/render-intro.mjs). Open /render/intro to preview it live.
  */
 
-export const INTRO = { size: 1200, duration: 18, fps: 30 };
+export const INTRO = { size: 1200, duration: 21, fps: 30 };
 
 const S = INTRO.size;
 const DUR = INTRO.duration;
@@ -23,12 +23,12 @@ const R = 430; // floor ring radius
 const FLOOR_Y = 300;
 const CLOUD_Y = -110;
 /** Act 1: the String FinTech brand on its own. */
-const BRAND_OUT = 3.6;
+const BRAND_OUT = 4.0;
 /** Act 2: the cloud rises in. */
-const CLOUD_IN = 3.2;
+const CLOUD_IN = 3.6;
 /** Act 3: one full-frame slide per service. */
-const SPOT0 = 5.6;
-const SPOT = 2.1;
+const SPOT0 = 6.4;
+const SPOT = 2.4;
 const SPOT_END = SPOT0 + SPOT * services.length;
 
 /** Three short highlights per service, drawn from each service's copy in lib/content.ts. */
@@ -37,7 +37,7 @@ const highlights: Record<string, string[]> = {
   "web3-gaming-blockchain": ["Cloud-hosted gaming", "Blockchain economies", "Digital asset ownership"],
   "ai-data-services-analytics": ["Data integration", "Predictive modeling", "Data visualization"],
   "digital-marketing-growth": ["SEO & AEO", "Social & influencer", "Agentic media"],
-  "financial-data-analytics": ["Equities · FX · Crypto", "Real-time analytics", "Custom dashboards"],
+  "financial-data-analytics": ["Equities · FX · Commodities", "Real-time analytics", "Custom dashboards"],
 };
 
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -211,7 +211,12 @@ export function IntroStage() {
       })}
 
       {/* Act 4: close */}
-      {t >= SPOT_END && <Finale f={t - SPOT_END} frame={frame} />}
+      {t >= SPOT_END && (
+        // Slow push-in so the closing shot keeps moving while it holds.
+        <div style={{ position: "absolute", inset: 0, transformOrigin: "50% 45%", transform: `scale(${lerp(1, 1.035, inOut(prog(t, SPOT_END, DUR)))})` }}>
+          <Finale f={t - SPOT_END} frame={frame} />
+        </div>
+      )}
 
       {/* Vignette, film grain and fade-through-white for a seamless loop */}
       <div

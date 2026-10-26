@@ -415,16 +415,16 @@ export const services: Service[] = [
     tagline: "Real-time market analytics, dashboards & reports",
     title: "Financial Data Analytics & Intelligence",
     summary:
-      "Real-time and historical analytics across equities, options, commodities, currencies and cryptocurrency, delivered through cloud-based dashboards and customizable reports.",
+      "Real-time and historical analytics across equities, options, commodities and currencies, delivered through cloud-based dashboards and customizable reports.",
     seoTitle: "Financial Data Analytics & Intelligence | String FinTech HK Ltd.",
     metaDescription:
-      "AI-assisted market analysis, algorithmic analytics and custom dashboards across equities, options, commodities, FX and cryptocurrency markets.",
+      "AI-assisted market analysis, algorithmic analytics and custom dashboards across equities, options, commodities and FX markets.",
     intro:
-      "String FinTech HK Ltd. empowers businesses, financial professionals, and technology-driven organizations to make smarter, data-driven decisions through advanced Financial Data Analytics & Intelligence solutions, supported by scalable cloud infrastructure, artificial intelligence, and innovative data technologies. We deliver analytics across equities, options, commodities, currencies, and cryptocurrency markets, combining real-time market data, historical datasets, intraday monitoring, and algorithmic analytical techniques to transform complex financial information into actionable insights.",
+      "String FinTech HK Ltd. empowers businesses, financial professionals, and technology-driven organizations to make smarter, data-driven decisions through advanced Financial Data Analytics & Intelligence solutions, supported by scalable cloud infrastructure, artificial intelligence, and innovative data technologies. We deliver analytics across equities, options, commodities, and currency markets, combining real-time market data, historical datasets, intraday monitoring, and algorithmic analytical techniques to transform complex financial information into actionable insights.",
     details: [
       "Through secure, scalable cloud services and AI-powered data processing, we transform market data into interactive dashboards, market summaries, historical comparisons, trend indicators, performance monitoring tools, and customizable reports. Our solutions help clients streamline data analysis, improve operational efficiency, monitor market movements, evaluate performance, and identify emerging trends and analytical patterns. By providing flexible data visualization, reporting capabilities, and cloud-based access to financial intelligence, we enable organizations to reduce the complexity of market analysis, enhance analytical capabilities, and make faster, more informed business decisions—all through technology solutions designed to support their evolving operational and strategic needs.",
     ],
-    markets: ["Equities", "Options", "Commodities", "Foreign Exchange", "Cryptocurrency"],
+    markets: ["Equities", "Options", "Commodities", "Foreign Exchange"],
     delivery: {
       heading: "Service Delivery Model",
       kind: "flow",
@@ -441,7 +441,7 @@ export const services: Service[] = [
           icon: "intelligence",
           core: true,
           description:
-            "String FinTech HK Ltd. delivers data processing, AI-assisted market analysis, algorithmic analytics, historical trend analysis, intraday data monitoring and visualization solutions across equities, options, commodities, foreign exchange and cryptocurrency markets.",
+            "String FinTech HK Ltd. delivers data processing, AI-assisted market analysis, algorithmic analytics, historical trend analysis, intraday data monitoring and visualization solutions across equities, options, commodities and foreign exchange markets.",
         },
         {
           id: "reporting",

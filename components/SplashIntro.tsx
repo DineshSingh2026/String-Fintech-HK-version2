@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 export const INTRO_DONE_EVENT = "string-intro-done";
 /** The video opens on the brand by itself; the corner logo appears once that scene ends. */
-const BRAND_SCENE_END = 3.6;
+const BRAND_SCENE_END = 4.0;
 
 /**
  * Hides the splash before first paint for visitors who prefer reduced motion.
@@ -30,7 +30,7 @@ function pickVideo() {
 }
 
 /**
- * Full-screen 18s company overview that plays every time the home page loads,
+ * Full-screen 21s company overview that plays every time the home page loads,
  * then fades away to reveal the landing page.
  */
 export function SplashIntro() {
@@ -52,7 +52,7 @@ export function SplashIntro() {
     skip.current?.focus({ preventScroll: true });
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && finish();
     document.addEventListener("keydown", onKey);
-    const safety = window.setTimeout(finish, 25000);
+    const safety = window.setTimeout(finish, 28000);
     return () => {
       document.removeEventListener("keydown", onKey);
       window.clearTimeout(safety);

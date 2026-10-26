@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import {
-  Bitcoin,
+  ChartCandlestick,
   Cloud,
   Coins,
   DatabaseZap,
@@ -419,7 +419,7 @@ const scenes: Record<string, { Scene: (p: { id: string }) => ReactNode; tags: Ta
     tags: [
       { icon: TrendingUp, label: "Equities", className: "left-[34%] top-[85%]" },
       { icon: Globe, label: "Foreign Exchange", className: "left-[55%] top-[85%]" },
-      { icon: Bitcoin, label: "Cryptocurrency", className: "left-[4%] top-[5%]" },
+      { icon: ChartCandlestick, label: "Options & Commodities", className: "left-[4%] top-[5%]" },
     ],
   },
   "cloud-infrastructure-ai": {

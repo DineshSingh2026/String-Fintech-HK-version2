@@ -18,7 +18,7 @@ const BASE = process.argv[2] ?? "http://localhost:3001";
 const [W, H] = (process.argv[3] ?? "1200x1200").split("x").map(Number);
 const NAME = process.argv[4] ?? "string-intro";
 const FPS = 30;
-const DURATION = 18;
+const DURATION = 21;
 const OUT_DIR = "public/video";
 const FRAMES = join(tmpdir(), `${NAME}-frames`);
 
@@ -49,7 +49,7 @@ for (let f = 0; f < total; f++) {
 }
 
 // Poster: the first service in the spotlight.
-await page.evaluate((time) => window.__seek(time), 6.8);
+await page.evaluate((time) => window.__seek(time), 7.8);
 await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
 await page.screenshot({ path: join(OUT_DIR, `${NAME}-poster.jpg`), type: "jpeg", quality: 85 });
 await browser.close();
