@@ -72,7 +72,12 @@
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
-/* Home hero orbit: gently bobbing service chips and a slowly turning ring. */
+/* Full-screen intro (components/SplashIntro.tsx): hidden before paint on repeat visits. */
+.intro-skip .splash-intro {
+  display: none;
+}
+
+/* Gently bobbing service tags (home hero orbit and service illustrations). */
 @keyframes float-soft {
   0%,
   100% {

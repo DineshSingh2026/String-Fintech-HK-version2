@@ -47,8 +47,9 @@ const orgJsonLd = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // suppressHydrationWarning: SplashIntroGate may add a class to <html> before hydration.
   return (
-    <html lang="en" className={`${interTight.variable} ${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${interTight.variable} ${inter.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
         <Header />

@@ -68,6 +68,8 @@ export type Service = {
   number: string;
   /** Compact label for tight spaces such as the home hero graphic. */
   shortTitle: string;
+  /** One-line pitch used in the home intro animation. */
+  tagline: string;
   title: string;
   summary: string;
   seoTitle: string;
@@ -94,6 +96,7 @@ export const services: Service[] = [
     slug: "cloud-infrastructure-ai",
     number: "01",
     shortTitle: "Cloud & AI",
+    tagline: "Migration, modernization & managed cloud on AWS and Google Cloud",
     title: "Cloud Infrastructure & AI Solutions",
     summary:
       "Cloud migration, modernization, managed services and AI workloads on AWS and Google Cloud, with cost optimization and transparent billing.",
@@ -260,6 +263,7 @@ export const services: Service[] = [
     slug: "web3-gaming-blockchain",
     number: "02",
     shortTitle: "Web3 & Blockchain",
+    tagline: "Cloud-hosted gaming with blockchain-based digital economies",
     title: "Web3 Gaming & Blockchain Solutions",
     summary:
       "Cloud-hosted gaming platforms with blockchain-based in-game economies and digital asset ownership, supported from deployment and integration through to ongoing scaling.",
@@ -304,6 +308,7 @@ export const services: Service[] = [
     slug: "ai-data-services-analytics",
     number: "03",
     shortTitle: "AI & Data Analytics",
+    tagline: "AI analytics, predictive modeling & data visualization",
     title: "AI-Powered Data Services & Analytics",
     summary:
       "AI-driven analytics, predictive modeling and data visualization on scalable cloud infrastructure, turning complex business data into actionable insights.",
@@ -357,6 +362,7 @@ export const services: Service[] = [
     slug: "digital-marketing-growth",
     number: "04",
     shortTitle: "Digital Marketing",
+    tagline: "SEO, AEO, social & agentic media for measurable growth",
     title: "Digital Marketing & Growth Solutions",
     summary:
       "SEO, AEO, social media, PPC and influencer marketing powered by AI analytics and agentic media services, helping businesses grow visibility, leads and conversions.",
@@ -406,6 +412,7 @@ export const services: Service[] = [
     slug: "financial-data-analytics",
     number: "05",
     shortTitle: "Financial Intelligence",
+    tagline: "Real-time market analytics, dashboards & reports",
     title: "Financial Data Analytics & Intelligence",
     summary:
       "Real-time and historical analytics across equities, options, commodities, currencies and cryptocurrency, delivered through cloud-based dashboards and customizable reports.",

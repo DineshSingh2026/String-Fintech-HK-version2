@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HeroOrbit, orbitDots } from "@/components/HeroOrbit";
+import { SplashIntro, SplashIntroGate } from "@/components/SplashIntro";
 import { Block, BlockHeading, Kicker, ServiceList, CtaSection } from "@/components/ui";
 import { about, home, images, services } from "@/lib/content";
 
@@ -22,6 +23,9 @@ export default function HomePage() {
   const { hero } = home;
   return (
     <>
+      <SplashIntroGate />
+      <SplashIntro />
+
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-white">
         {/* Cloud hub with every service in orbit, drawn straight onto the white page beside the copy. */}
