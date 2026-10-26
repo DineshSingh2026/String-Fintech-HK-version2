@@ -51,7 +51,7 @@ export default function ContactPage() {
           <iframe
             title={`Map: ${company.mapQuery}`}
             src={mapSrc}
-            className="block h-[360px] w-full rounded-2xl border border-slate-200 grayscale"
+            className="block h-[360px] w-full rounded-2xl border border-slate-200"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />

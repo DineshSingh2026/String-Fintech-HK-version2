@@ -53,7 +53,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link href={"/contact"} className="btn hidden min-h-10 bg-ink py-2 text-sm text-white hover:bg-slate-700 md:inline-flex">
+            <Link href={"/contact"} className="btn hidden min-h-10 bg-brand-600 py-2 text-sm text-white shadow-[0_8px_20px_-8px_rgba(208,64,0,0.6)] hover:bg-brand-700 md:inline-flex">
               Get in Touch
             </Link>
             <button
