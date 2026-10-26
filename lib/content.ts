@@ -73,6 +73,8 @@ export type Service = {
   seoTitle: string;
   metaDescription: string;
   intro: string;
+  /** Further paragraphs shown in a "How We Help" section below the page intro. */
+  details?: string[];
   positioning?: string;
   markets?: string[];
   delivery: {
@@ -82,222 +84,19 @@ export type Service = {
     nodes: DiagramNode[];
   };
   capabilities?: { label: string; icon: IconKey }[];
-  strategy?: { heading: string; body: string };
   billing?: { heading: string; body: string };
   /** Extended end-to-end detail, currently used by the Cloud service page. */
   cloud?: CloudDetail;
-  objective: string;
-  note?: string;
 };
 
 export const services: Service[] = [
   {
-    slug: "web3-gaming-blockchain",
-    number: "01",
-    shortTitle: "Web3 & Blockchain",
-    title: "Web3 Gaming & Blockchain Solutions",
-    summary:
-      "We build next-generation gaming experiences powered by blockchain technology, decentralized platforms and NFTs, enabling secure digital asset ownership, transparent in-game economies and seamless interoperability.",
-    seoTitle: "Web3 Gaming & Blockchain Solutions | String FinTech HK Ltd.",
-    metaDescription:
-      "Blockchain-powered gaming platforms, API connectivity and transaction infrastructure connecting gaming operators with authorized financial service providers.",
-    intro:
-      "We build next-generation gaming experiences powered by blockchain technology, decentralized platforms and NFTs. Our solutions enable secure digital asset ownership, transparent in-game economies and seamless interoperability, creating immersive, player-centric ecosystems that redefine digital engagement.",
-    delivery: {
-      heading: "Corporate Service Delivery Model",
-      intro:
-        "Our Corporate Service Delivery Model shows how String FinTech HK Ltd. connects corporate clients and digital gaming operators with technology infrastructure, authorized financial service providers and end customers through an integrated service delivery framework.",
-      kind: "flow",
-      nodes: [
-        {
-          id: "corporate-clients",
-          title: "Corporate Clients",
-          icon: "corporate",
-          description:
-            "Gaming operators, digital businesses and enterprise partners engage String FinTech HK Ltd. for gaming software, blockchain technology, API integration and transaction reporting solutions tailored to their business requirements.",
-        },
-        {
-          id: "string",
-          title: "String FinTech HK Ltd.",
-          subtitle: "Technology & Integration Layer",
-          icon: "string",
-          core: true,
-          description:
-            "Provides gaming platform development, blockchain-enabled solutions, API connectivity, and transaction data and reconciliation workflows to support efficient digital operations.",
-        },
-        {
-          id: "financial-institutions",
-          title: "Authorized Financial Institutions",
-          icon: "institution",
-          description:
-            "Facilitate regulated financial transactions and eligible payment services.",
-        },
-        {
-          id: "end-customers",
-          title: "End Customers & Gaming Participants",
-          icon: "users",
-          description:
-            "Access supported gaming platforms and eligible payment services through convenient digital channels, with transaction visibility and a streamlined user experience.",
-        },
-      ],
-    },
-    objective:
-      "To establish a scalable, collaborative ecosystem in which String FinTech HK Ltd. delivers technology infrastructure, corporate clients operate their digital services, authorized financial institutions facilitate regulated financial transactions, and end customers access supported services securely and efficiently.",
-  },
-  {
-    slug: "ai-data-services-analytics",
-    number: "02",
-    shortTitle: "AI & Data Analytics",
-    title: "AI-Powered Data Services & Analytics",
-    summary:
-      "We transform complex data into actionable intelligence through advanced data engineering, AI-driven analytics and scalable data management solutions.",
-    seoTitle: "AI-Powered Data Services & Analytics | String FinTech HK Ltd.",
-    metaDescription:
-      "Data engineering, AI-driven analytics, dashboards and predictive insights for exchanges, financial institutions, gaming operators and digital enterprises.",
-    intro:
-      "We transform complex data into actionable intelligence through advanced data engineering, AI-driven analytics and scalable data management solutions. From data collection and processing to visualization and predictive insights, we empower organizations to make smarter decisions, optimize operations and accelerate sustainable business growth.",
-    delivery: {
-      heading: "Service Delivery Model",
-      kind: "flow",
-      nodes: [
-        {
-          id: "corporate-clients",
-          title: "Corporate Clients",
-          icon: "corporate",
-          description:
-            "Exchanges, financial trading institutions, gaming operators and digital enterprises engage String FinTech HK Ltd. to improve data utilization, automate reporting, enhance operational efficiency and support data-driven business decisions.",
-        },
-        {
-          id: "string",
-          title: "String FinTech HK Ltd.",
-          subtitle: "Technology & Data Intelligence Layer",
-          icon: "string",
-          core: true,
-          description:
-            "Provides data collection and integration, data processing, AI-driven analytics, predictive insights, dashboard development and automated reporting solutions tailored to corporate requirements.",
-        },
-        {
-          id: "business-users",
-          title: "Business Users & Decision-Makers",
-          icon: "decision",
-          description:
-            "Management teams, analysts and operational departments access actionable insights, performance dashboards, trend analysis and predictive intelligence to support strategic planning, risk assessment, operational optimization and business growth.",
-        },
-      ],
-    },
-    capabilities: [
-      { label: "Data Collection & Integration", icon: "collect" },
-      { label: "Data Processing", icon: "process" },
-      { label: "AI-Driven Analytics", icon: "ai" },
-      { label: "Predictive Insights", icon: "predict" },
-      { label: "Dashboard Development", icon: "dashboard" },
-      { label: "Automated Reporting", icon: "automate" },
-    ],
-    objective:
-      "To establish a scalable, AI-driven data ecosystem that connects corporate data sources with intelligent processing and analytics capabilities, enabling organizations to make informed decisions, improve productivity and unlock measurable business value, all while maintaining appropriate data security, privacy and governance controls.",
-  },
-  {
-    slug: "digital-marketing-growth",
-    number: "03",
-    shortTitle: "Digital Marketing",
-    title: "Digital Marketing & Growth Solutions",
-    summary:
-      "We deliver data-driven digital marketing strategies that strengthen brand visibility, engage target audiences and maximize conversions.",
-    seoTitle: "Digital Marketing & Growth Solutions | String FinTech HK Ltd.",
-    metaDescription:
-      "AI-powered SEO, performance marketing, audience targeting and campaign analytics delivering measurable growth for corporate clients.",
-    intro:
-      "We deliver data-driven digital marketing strategies designed to strengthen brand visibility, engage target audiences and maximize conversions. By combining AI-powered insights, performance marketing, SEO and digital optimization, we help businesses generate qualified leads, improve campaign effectiveness and achieve measurable growth.",
-    delivery: {
-      heading: "Corporate Service Delivery & Customized Model",
-      intro:
-        "Our Corporate Service Delivery and Customized Model delivers AI-powered digital marketing services to corporate clients through a structured four-stage process.",
-      kind: "process",
-      nodes: [
-        {
-          id: "requirements",
-          title: "Business Requirements",
-          icon: "requirements",
-          description: "Understanding client objectives, audiences and goals",
-        },
-        {
-          id: "execution",
-          title: "Campaign Execution",
-          icon: "execution",
-          description: "Deploying tailored strategies across digital channels",
-        },
-        {
-          id: "analytics",
-          title: "Performance Analytics",
-          icon: "analytics",
-          description: "Measuring, reporting and optimizing results",
-        },
-        {
-          id: "settlement",
-          title: "Commercial Settlement",
-          icon: "settlement",
-          description: "Payments settled according to agreed contractual terms",
-        },
-      ],
-    },
-    strategy: {
-      heading: "Marketing Strategy & Service Delivery",
-      body: "String FinTech HK Ltd. evaluates client requirements and develops tailored digital marketing strategies, including SEO, performance marketing, audience targeting, campaign optimization, content promotion and AI-driven marketing analytics.",
-    },
-    objective:
-      "To establish a transparent, measurable and scalable digital marketing ecosystem in which String FinTech HK Ltd. delivers data-driven growth services, corporate clients receive measurable marketing outcomes, digital platforms facilitate campaign distribution, and payments are settled according to agreed contractual terms.",
-  },
-  {
-    slug: "financial-data-analytics",
-    number: "04",
-    shortTitle: "Financial Intelligence",
-    title: "Financial Data Analytics & Intelligence",
-    summary:
-      "We provide advanced financial data analytics across equities, options, commodities, currencies and cryptocurrency markets.",
-    seoTitle: "Financial Data Analytics & Intelligence | String FinTech HK Ltd.",
-    metaDescription:
-      "AI-assisted market analysis, algorithmic analytics and custom dashboards across equities, options, commodities, FX and cryptocurrency markets.",
-    intro:
-      "We provide advanced financial data analytics across equities, options, commodities, currencies and cryptocurrency markets. Leveraging AI-driven analysis, algorithmic strategies and real-time market data, we transform complex financial information into meaningful insights through historical analysis, intraday monitoring and customizable data visualizations.",
-    markets: ["Equities", "Options", "Commodities", "Foreign Exchange", "Cryptocurrency"],
-    delivery: {
-      heading: "Service Delivery Model",
-      kind: "flow",
-      nodes: [
-        {
-          id: "technology-providers",
-          title: "Technology Providers",
-          icon: "provider",
-          description: "Supply authorized market data and computing infrastructure.",
-        },
-        {
-          id: "analytics-services",
-          title: "Analytics & Intelligence Services",
-          icon: "intelligence",
-          core: true,
-          description:
-            "String FinTech HK Ltd. delivers data processing, AI-assisted market analysis, algorithmic analytics, historical trend analysis, intraday data monitoring and visualization solutions across equities, options, commodities, foreign exchange and cryptocurrency markets.",
-        },
-        {
-          id: "reporting",
-          title: "Financial Intelligence & Reporting",
-          icon: "reporting",
-          description:
-            "Processed data is transformed into interactive dashboards, market summaries, historical comparisons, trend indicators and customizable reports, helping clients evaluate market activity, monitor performance and identify analytical patterns.",
-        },
-      ],
-    },
-    objective:
-      "To establish a scalable financial intelligence ecosystem in which String FinTech HK Ltd. transforms complex market data into actionable analytical insights, corporate clients access customized intelligence services, technology providers supply authorized data and computing infrastructure, and service payments are settled transparently under agreed commercial terms.",
-    note: "Analytics and intelligence services are provided for informational purposes only and do not constitute investment advice or a recommendation to buy or sell any financial instrument.",
-  },
-  {
     slug: "cloud-infrastructure-ai",
-    number: "05",
+    number: "01",
     shortTitle: "Cloud & AI",
     title: "Cloud Infrastructure & AI Solutions",
     summary:
-      "We design and implement secure, scalable, cloud-native architectures built for modern business demands.",
+      "Cloud migration, modernization, managed services and AI workloads on AWS and Google Cloud, with cost optimization and transparent billing.",
     seoTitle: "Cloud Infrastructure & AI Solutions | String FinTech HK Ltd.",
     metaDescription:
       "Cloud-native architecture, migration, containerization and AI-ready infrastructure on AWS and Google Cloud, with transparent billing and settlement.",
@@ -456,8 +255,196 @@ export const services: Service[] = [
         note: "Cloud-provider resale, partner discounts, commissions, and consolidated billing are subject to the relevant provider program requirements and signed agreements. Service scope, service levels, taxes, and payment terms should be documented in each client contract.",
       },
     },
-    objective:
-      "String FinTech HK Ltd. bridges corporate customers and leading cloud platforms through integrated cloud infrastructure and AI solutions. Through AWS and Google Cloud environments, we help businesses modernize applications, deploy AI workloads, optimize infrastructure costs and maintain scalable digital operations, supported by transparent contractual billing and settlement processes.",
+  },
+  {
+    slug: "web3-gaming-blockchain",
+    number: "02",
+    shortTitle: "Web3 & Blockchain",
+    title: "Web3 Gaming & Blockchain Solutions",
+    summary:
+      "Cloud-hosted gaming platforms with blockchain-based in-game economies and digital asset ownership, supported from deployment and integration through to ongoing scaling.",
+    seoTitle: "Web3 Gaming & Blockchain Solutions | String FinTech HK Ltd.",
+    metaDescription:
+      "Blockchain-powered gaming platforms, API connectivity and transaction infrastructure connecting gaming operators with authorized financial service providers.",
+    intro:
+      "String FinTech HK Ltd. delivers next-generation gaming solutions and services supported by scalable cloud infrastructure, blockchain technology, and innovative digital platforms. We help corporate clients build, deploy, and manage reliable gaming ecosystems with cloud-based hosting, flexible computing resources, and infrastructure designed to support performance, availability, and growing user demand. Our solutions integrate blockchain-based technologies to enable transparent in-game economies, digital asset ownership, and enhanced player engagement. From infrastructure deployment and platform integration to ongoing technical support and scalability, we help clients optimize gaming performance, improve operational efficiency, and develop engaging digital experiences for web, desktop, mobile, and community-driven platforms.",
+    delivery: {
+      heading: "Corporate Service Delivery Model",
+      intro:
+        "Our Corporate Service Delivery Model shows how String FinTech HK Ltd. connects corporate clients and digital gaming operators with technology infrastructure, authorized financial service providers and end customers through an integrated service delivery framework.",
+      kind: "flow",
+      nodes: [
+        {
+          id: "corporate-clients",
+          title: "Corporate Clients",
+          icon: "corporate",
+          description:
+            "Gaming operators, digital businesses and enterprise partners engage String FinTech HK Ltd. for gaming software, blockchain technology, API integration and transaction reporting solutions tailored to their business requirements.",
+        },
+        {
+          id: "string",
+          title: "String FinTech HK Ltd.",
+          subtitle: "Technology & Integration Layer",
+          icon: "string",
+          core: true,
+          description:
+            "Provides gaming platform development, blockchain-enabled solutions, API connectivity, and transaction data and reconciliation workflows to support efficient digital operations.",
+        },
+        {
+          id: "end-customers",
+          title: "End Customers & Gaming Participants",
+          icon: "users",
+          description:
+            "Access supported gaming platforms and eligible payment services through convenient digital channels, with transaction visibility and a streamlined user experience.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "ai-data-services-analytics",
+    number: "03",
+    shortTitle: "AI & Data Analytics",
+    title: "AI-Powered Data Services & Analytics",
+    summary:
+      "AI-driven analytics, predictive modeling and data visualization on scalable cloud infrastructure, turning complex business data into actionable insights.",
+    seoTitle: "AI-Powered Data Services & Analytics | String FinTech HK Ltd.",
+    metaDescription:
+      "Data engineering, AI-driven analytics, dashboards and predictive insights for exchanges, financial institutions, gaming operators and digital enterprises.",
+    intro:
+      "String FinTech HK Ltd. delivers AI-powered data services and analytics through scalable cloud infrastructure, intelligent data processing, and advanced analytical technologies. We help businesses collect, integrate, process, and manage data efficiently while transforming complex information into actionable insights through AI-driven analytics, predictive modeling, and interactive data visualization. Our cloud-based solutions support secure data management, flexible computing resources, real-time analysis, and scalable data operations. By enabling faster insights, improved operational efficiency, better resource utilization, and data-driven decision-making, we help organizations optimize business processes, identify growth opportunities, and accelerate digital transformation.",
+    details: [
+      "String FinTech HK Ltd. helps corporate clients modernize their data operations through integrated cloud services, AI-powered analytics, and scalable data management solutions. We connect enterprise data sources with secure cloud infrastructure and intelligent processing systems to streamline data integration, automate workflows, and transform complex business information into actionable insights. Our solutions support operational performance monitoring, business intelligence, predictive analytics, and customized reporting, enabling organizations to improve productivity, optimize resource utilization, reduce operational inefficiencies, and make informed strategic decisions. With flexible cloud infrastructure and appropriate data security, privacy, access management, and governance controls, we help corporate clients build scalable, efficient, and data-driven operations that deliver measurable business value.",
+    ],
+    delivery: {
+      heading: "Service Delivery Model",
+      kind: "flow",
+      nodes: [
+        {
+          id: "corporate-clients",
+          title: "Corporate Clients",
+          icon: "corporate",
+          description:
+            "Exchanges, financial trading institutions, gaming operators and digital enterprises engage String FinTech HK Ltd. to improve data utilization, automate reporting, enhance operational efficiency and support data-driven business decisions.",
+        },
+        {
+          id: "string",
+          title: "String FinTech HK Ltd.",
+          subtitle: "Technology & Data Intelligence Layer",
+          icon: "string",
+          core: true,
+          description:
+            "Provides data collection and integration, data processing, AI-driven analytics, predictive insights, dashboard development and automated reporting solutions tailored to corporate requirements.",
+        },
+        {
+          id: "business-users",
+          title: "Business Users & Decision-Makers",
+          icon: "decision",
+          description:
+            "Management teams, analysts and operational departments access actionable insights, performance dashboards, trend analysis and predictive intelligence to support strategic planning, risk assessment, operational optimization and business growth.",
+        },
+      ],
+    },
+    capabilities: [
+      { label: "Data Collection & Integration", icon: "collect" },
+      { label: "Data Processing", icon: "process" },
+      { label: "AI-Driven Analytics", icon: "ai" },
+      { label: "Predictive Insights", icon: "predict" },
+      { label: "Dashboard Development", icon: "dashboard" },
+      { label: "Automated Reporting", icon: "automate" },
+    ],
+  },
+  {
+    slug: "digital-marketing-growth",
+    number: "04",
+    shortTitle: "Digital Marketing",
+    title: "Digital Marketing & Growth Solutions",
+    summary:
+      "SEO, PPC, social media and performance marketing powered by AI analytics, helping businesses reach the right audiences, generate qualified leads and improve conversions.",
+    seoTitle: "Digital Marketing & Growth Solutions | String FinTech HK Ltd.",
+    metaDescription:
+      "AI-powered SEO, performance marketing, audience targeting and campaign analytics delivering measurable growth for corporate clients.",
+    intro:
+      "String FinTech HK Ltd. combines cloud services, AI-driven marketing analytics, and digital innovation to help businesses strengthen their online presence, reach target audiences, and accelerate growth. We deliver tailored solutions across Search Engine Optimization (SEO), Answer Engine Optimization (AEO), Social Media Marketing (SMM), performance marketing, PPC advertising, influencer marketing, content creation and promotion, and audience targeting. Our AI-powered online advertising and agentic media services support intelligent campaign planning, automated optimization, audience engagement, and data-driven performance monitoring. Supported by scalable cloud infrastructure and advanced marketing analytics, our solutions help clients improve search visibility, expand brand reach, generate qualified leads, optimize advertising expenditure, increase conversions, and measure campaign effectiveness. We enable businesses to build stronger digital brands, improve customer acquisition efficiency, and achieve measurable, sustainable growth.",
+    details: [
+      "String FinTech HK Ltd. empowers businesses to strengthen their digital presence, reach the right audiences, and accelerate sustainable growth through data-driven digital marketing and technology-enabled solutions. We evaluate each client's business objectives, target audience, industry landscape, and growth requirements to develop tailored marketing strategies that align with their goals. Our services include search engine optimization (SEO), performance marketing, pay-per-click (PPC) advertising, social media marketing, content creation and promotion, audience targeting, website optimization, and campaign management.",
+      "By leveraging AI-driven marketing analytics, data insights, and continuous campaign optimization, we help clients improve online visibility, attract qualified traffic, enhance audience engagement, and measure marketing performance. From building brand awareness and generating leads to improving conversion rates and optimizing advertising expenditure, our solutions are designed to help businesses make informed marketing decisions and maximize the value of their digital investments. Whether supporting emerging businesses or established enterprises, String FinTech HK Ltd. delivers flexible, scalable, and results-oriented digital marketing solutions tailored to each client's evolving needs.",
+    ],
+    delivery: {
+      heading: "Corporate Service Delivery & Customized Model",
+      intro:
+        "Our Corporate Service Delivery and Customized Model delivers AI-powered digital marketing services to corporate clients through a structured four-stage process.",
+      kind: "process",
+      nodes: [
+        {
+          id: "requirements",
+          title: "Business Requirements",
+          icon: "requirements",
+          description: "Understanding client objectives, audiences and goals",
+        },
+        {
+          id: "execution",
+          title: "Campaign Execution",
+          icon: "execution",
+          description: "Deploying tailored strategies across digital channels",
+        },
+        {
+          id: "analytics",
+          title: "Performance Analytics",
+          icon: "analytics",
+          description: "Measuring, reporting and optimizing results",
+        },
+        {
+          id: "settlement",
+          title: "Commercial Settlement",
+          icon: "settlement",
+          description: "Payments settled according to agreed contractual terms",
+        },
+      ],
+    },
+  },
+  {
+    slug: "financial-data-analytics",
+    number: "05",
+    shortTitle: "Financial Intelligence",
+    title: "Financial Data Analytics & Intelligence",
+    summary:
+      "Real-time and historical analytics across equities, options, commodities, currencies and cryptocurrency, delivered through cloud-based dashboards and customizable reports.",
+    seoTitle: "Financial Data Analytics & Intelligence | String FinTech HK Ltd.",
+    metaDescription:
+      "AI-assisted market analysis, algorithmic analytics and custom dashboards across equities, options, commodities, FX and cryptocurrency markets.",
+    intro:
+      "String FinTech HK Ltd. empowers businesses, financial professionals, and technology-driven organizations to make smarter, data-driven decisions through advanced Financial Data Analytics & Intelligence solutions, supported by scalable cloud infrastructure, artificial intelligence, and innovative data technologies. We deliver analytics across equities, options, commodities, currencies, and cryptocurrency markets, combining real-time market data, historical datasets, intraday monitoring, and algorithmic analytical techniques to transform complex financial information into actionable insights.",
+    details: [
+      "Through secure, scalable cloud services and AI-powered data processing, we transform market data into interactive dashboards, market summaries, historical comparisons, trend indicators, performance monitoring tools, and customizable reports. Our solutions help clients streamline data analysis, improve operational efficiency, monitor market movements, evaluate performance, and identify emerging trends and analytical patterns. By providing flexible data visualization, reporting capabilities, and cloud-based access to financial intelligence, we enable organizations to reduce the complexity of market analysis, enhance analytical capabilities, and make faster, more informed business decisions—all through technology solutions designed to support their evolving operational and strategic needs.",
+    ],
+    markets: ["Equities", "Options", "Commodities", "Foreign Exchange", "Cryptocurrency"],
+    delivery: {
+      heading: "Service Delivery Model",
+      kind: "flow",
+      nodes: [
+        {
+          id: "technology-providers",
+          title: "Cloud & Technology Services",
+          icon: "provider",
+          description: "Supply authorized market data and cloud computing infrastructure.",
+        },
+        {
+          id: "analytics-services",
+          title: "Analytics & Intelligence Services",
+          icon: "intelligence",
+          core: true,
+          description:
+            "String FinTech HK Ltd. delivers data processing, AI-assisted market analysis, algorithmic analytics, historical trend analysis, intraday data monitoring and visualization solutions across equities, options, commodities, foreign exchange and cryptocurrency markets.",
+        },
+        {
+          id: "reporting",
+          title: "Financial Intelligence & Reporting",
+          icon: "reporting",
+          description:
+            "Processed data is transformed into interactive dashboards, market summaries, historical comparisons, trend indicators and customizable reports, helping clients evaluate market activity, monitor performance and identify analytical patterns.",
+        },
+      ],
+    },
   },
 ];
 
@@ -476,27 +463,11 @@ export const home = {
   metaDescription:
     "Technology-led solutions in AI, Web3 gaming, data analytics, digital marketing, financial intelligence and cloud infrastructure for enterprises and financial institutions.",
   hero: {
-    eyebrow: "AI • Technology • Innovation",
-    headline: "Transforming Business Through AI, Innovation & Technology",
-    body: "We combine intelligent automation and strategic IT consulting to help organizations optimize operations, sharpen decision-making and accelerate digital transformation, delivering measurable impact and sustainable growth.",
-  },
-  overview: {
-    eyebrow: "Executive Overview",
-    headline: "Connecting the Digital Economy with Trusted Financial Services",
-    columns: [
-      {
-        title: "The Framework",
-        body: "String FinTech HK Ltd. offers a technology-led framework designed to connect Web3 gaming ecosystems with traditional finance and corporate financial services.",
-      },
-      {
-        title: "The Platform",
-        body: "By combining gaming software, blockchain-enabled asset records, digital payment integrations, transaction infrastructure and API-based connectivity, the platform helps corporate partners build more efficient, transparent and scalable digital gaming businesses.",
-      },
-      {
-        title: "The Objective",
-        body: "To enable financial institutions to serve the growing digital economy, while allowing gaming operators and end customers to access suitable payment and financial services through authorized providers.",
-      },
-    ],
+    eyebrow: "Cloud Services • AI • Technology Services • Innovation",
+    headline: "Transforming Business Through Cloud Services, AI, Innovation & Technology",
+    /** Tail of the headline shown in the brand gradient. */
+    highlight: "Cloud Services, AI, Innovation & Technology",
+    body: "String FinTech HK Ltd. empowers businesses to accelerate digital transformation through cloud services, artificial intelligence, innovation, and advanced technology solutions. We help organizations leverage cloud infrastructure, AI-powered services, blockchain-based technology, financial technology infrastructure, and intelligent automation to streamline operations, optimize costs, enhance efficiency, and unlock new growth opportunities. By bridging traditional business ecosystems with the emerging digital and agentic economies, we aim to deliver scalable, secure, and reliable technology solutions that support business innovation, operational excellence, and sustainable growth.",
   },
   services: {
     eyebrow: "Our Services",
@@ -544,11 +515,11 @@ export const contact = {
   headline: "Contact Us",
   subheadline: "Let's discuss how technology can move your business forward.",
   serviceOptions: [
+    "Cloud Infrastructure & AI",
     "Web3 Gaming & Blockchain",
     "AI Data Services & Analytics",
     "Digital Marketing & Growth",
     "Financial Data Analytics",
-    "Cloud Infrastructure & AI",
     "IT Consulting",
     "Other",
   ],

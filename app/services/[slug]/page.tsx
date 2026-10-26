@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowDown, ArrowRight, Info } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { CloudCapabilities, CloudCommercials } from "@/components/CloudSections";
+import { ServiceArt } from "@/components/ServiceArt";
 import { iconMap } from "@/components/icons";
-import { Block, BlockHeading, Kicker, PageIntro, ServiceList, CtaSection } from "@/components/ui";
+import { Block, BlockHeading, PageIntro, ServiceList, CtaSection } from "@/components/ui";
 import { getService, serviceHref, services } from "@/lib/content";
 
 type Params = { slug: string };
@@ -42,6 +43,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         kicker={`Service ${s.number}`}
         title={s.title}
         intro={s.intro}
+        art={<ServiceArt slug={s.slug} />}
         crumbs={[{ href: "/", label: "Home" }, { href: "/services", label: "Services" }, { label: s.title }]}
       >
         {s.markets && (
@@ -60,6 +62,18 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           <p className="max-w-4xl border-l-2 border-brand pl-6 font-heading text-xl font-medium leading-relaxed text-ink sm:text-2xl">
             {s.positioning}
           </p>
+        </Block>
+      )}
+
+      {s.details && (
+        <Block labelledBy="details-heading">
+          <BlockHeading id="details-heading" kicker="Overview" title="How We Help">
+            {s.details.map((p) => (
+              <p key={p} className="mt-5 first:mt-0">
+                {p}
+              </p>
+            ))}
+          </BlockHeading>
         </Block>
       )}
 
@@ -117,14 +131,6 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         </Block>
       )}
 
-      {s.strategy && (
-        <Block labelledBy="strategy-heading">
-          <BlockHeading id="strategy-heading" kicker="Strategy" title={s.strategy.heading}>
-            <p>{s.strategy.body}</p>
-          </BlockHeading>
-        </Block>
-      )}
-
       {s.cloud && <CloudCommercials cloud={s.cloud} billingBody={s.billing?.body} />}
 
       {s.billing && !s.cloud && (
@@ -134,22 +140,6 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </BlockHeading>
         </Block>
       )}
-
-      <Block labelledBy="objective-heading">
-        <div className="max-w-4xl">
-          <Kicker>Our Objective</Kicker>
-          <h2 id="objective-heading" className="sr-only">
-            Our Objective
-          </h2>
-          <p className="mt-4 font-heading text-2xl font-medium leading-snug text-ink sm:text-[28px] sm:leading-snug">{s.objective}</p>
-        </div>
-        {s.note && (
-          <p className="mt-12 flex max-w-4xl gap-3 border-t border-slate-200 pt-6 text-[13px] leading-relaxed text-slate-500">
-            <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-            {s.note}
-          </p>
-        )}
-      </Block>
 
       <Block tone="mist" labelledBy="more-heading">
         <div className="flex items-end justify-between gap-6">

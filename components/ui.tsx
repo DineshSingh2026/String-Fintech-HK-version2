@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
-import { serviceIcons } from "@/components/icons";
+import { ServiceArt } from "@/components/ServiceArt";
 import { ctaBand, serviceHref, services, type Service } from "@/lib/content";
 
 export function Kicker({ children }: { children: ReactNode }) {
@@ -14,12 +14,15 @@ export function PageIntro({
   title,
   intro,
   crumbs,
+  art,
   children,
 }: {
   kicker?: string;
   title: string;
   intro?: string;
   crumbs?: { href?: string; label: string }[];
+  /** Optional illustration shown beside the copy on large screens, below it on small ones. */
+  art?: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -45,11 +48,23 @@ export function PageIntro({
             </ol>
           </nav>
         )}
-        <div className="max-w-3xl">
-          {kicker && <Kicker>{kicker}</Kicker>}
-          <h1 className="mt-4 text-4xl leading-[1.1] text-ink sm:text-5xl">{title}</h1>
-          {intro && <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed">{intro}</p>}
-          {children}
+        <div className={art ? "grid items-center gap-12 lg:grid-cols-12 lg:gap-14" : ""}>
+          <div className={art ? "lg:col-span-7" : "max-w-3xl"}>
+            {kicker && <Kicker>{kicker}</Kicker>}
+            <h1 className="mt-4 text-4xl leading-[1.1] text-ink sm:text-5xl">{title}</h1>
+            {intro && (
+              <p className={`mt-6 leading-relaxed text-slate-600 ${art ? "text-lg" : "text-lg sm:text-xl sm:leading-relaxed"}`}>{intro}</p>
+            )}
+            {children}
+          </div>
+          {art && (
+            <div className="relative lg:col-span-5">
+              <div aria-hidden className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-slate-200/60 to-transparent blur-2xl" />
+              <div className="relative aspect-[4/3] rounded-3xl shadow-[0_24px_50px_-28px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.06]">
+                {art}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -97,12 +112,11 @@ export function ServiceList({ items = services }: { items?: Service[] }) {
   return (
     <ul className="divide-y divide-slate-200 border-y border-slate-200">
       {items.map((s) => {
-        const Icon = serviceIcons[s.slug];
         return (
           <li key={s.slug}>
-            <Link href={serviceHref(s.slug)} className="group grid gap-4 py-8 sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:gap-8">
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-slate-200 text-brand transition-colors group-hover:border-brand group-hover:bg-brand-50">
-                <Icon className="h-5 w-5" strokeWidth={1.6} aria-hidden />
+            <Link href={serviceHref(s.slug)} className="group grid gap-5 py-8 sm:grid-cols-[14rem_1fr_auto] sm:items-center sm:gap-8">
+              <span className="block aspect-[16/9] rounded-2xl ring-1 ring-slate-900/[0.06] transition-shadow duration-300 group-hover:shadow-[0_16px_32px_-18px_rgba(15,23,42,0.35)] sm:aspect-[4/3]">
+                <ServiceArt slug={s.slug} size="sm" />
               </span>
               <span className="block">
                 <span className="block text-sm text-slate-400">{s.number}</span>

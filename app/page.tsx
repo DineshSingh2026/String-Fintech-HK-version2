@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const { hero, overview } = home;
+  const { hero } = home;
   return (
     <>
       {/* HERO */}
@@ -40,7 +40,7 @@ export default function HomePage() {
         </div>
 
         <div className="container-site flex flex-col justify-center pb-20 pt-14 sm:pb-24 sm:pt-20 lg:min-h-[min(calc(100svh-64px),780px)] lg:py-8">
-          <div className="max-w-[34rem] lg:max-w-[calc(50%-3rem)] xl:max-w-[34rem]">
+          <div className="max-w-[36rem] lg:max-w-[calc(50%-2rem)] xl:max-w-[36rem]">
             <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm font-medium text-slate-700 shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
@@ -48,13 +48,11 @@ export default function HomePage() {
               </span>
               {hero.eyebrow}
             </p>
-            <h1 className="mt-6 text-[40px] leading-[1.04] tracking-[-0.025em] text-ink sm:text-6xl lg:mt-5 lg:text-[clamp(2.5rem,7.2svh,3.75rem)]">
-              {hero.headline.split("AI, Innovation & Technology")[0]}
-              <span className="bg-gradient-to-r from-brand-700 via-brand-600 to-[#ff7a2e] bg-clip-text text-transparent">
-                AI, Innovation &amp; Technology
-              </span>
+            <h1 className="mt-6 text-[36px] leading-[1.05] tracking-[-0.025em] text-ink sm:text-5xl lg:mt-5 lg:text-[clamp(2.25rem,5.8svh,3.25rem)]">
+              {hero.headline.slice(0, hero.headline.indexOf(hero.highlight))}
+              <span className="bg-gradient-to-r from-brand-700 via-brand-600 to-[#ff7a2e] bg-clip-text text-transparent">{hero.highlight}</span>
             </h1>
-            <p className="mt-7 text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed lg:mt-[clamp(1rem,2.6svh,1.75rem)] lg:text-[clamp(1rem,2.3svh,1.25rem)]">{hero.body}</p>
+            <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-[17px] lg:mt-[clamp(0.875rem,2.2svh,1.5rem)] lg:text-[clamp(0.9375rem,1.95svh,1.0625rem)]">{hero.body}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row lg:mt-[clamp(1.5rem,4svh,2.5rem)]">
               <Link
                 href="/services"
@@ -92,20 +90,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* EXECUTIVE OVERVIEW */}
-      <Block tone="mist" labelledBy="overview-heading">
-        <BlockHeading id="overview-heading" kicker={overview.eyebrow} title={overview.headline} />
-        <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-          {overview.columns.map((c, i) => (
-            <div key={c.title} className="border-t-2 border-ink pt-6">
-              <span className="text-sm text-slate-400">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-2 text-xl text-ink">{c.title}</h3>
-              <p className="mt-3 text-[16px] leading-relaxed text-slate-600">{c.body}</p>
-            </div>
-          ))}
-        </div>
-      </Block>
 
       {/* SERVICES */}
       <Block labelledBy="services-heading">
